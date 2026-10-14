@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="github-presence-skills icon: a checklist">
+  <rect width="128" height="128" rx="28" fill="#0F172A"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+    <path d="M30 40 l8 8 l14 -16" stroke="#2DD4BF"/>
+    <path d="M30 72 l8 8 l14 -16" stroke="#2DD4BF"/>
+    <path d="M62 40 h36" stroke="#F8FAFC"/>
+    <path d="M62 72 h36" stroke="#F8FAFC"/>
+    <path d="M62 100 h24" stroke="#64748B"/>
+    <rect x="30" y="92" width="16" height="16" rx="3" stroke="#64748B"/>
+  </g>
+</svg>

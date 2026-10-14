@@ -1,0 +1,21 @@
+schema_version: "1.1"
+name: family-private-excluded
+description: A private family member is never linked from public READMEs.
+tags: [family, privacy]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Cross-link all my tinyqueue repos under acme-labs: tinyqueue (public), tinyqueue-redis
+    (public), tinyqueue-internal-bench (private), tinyqueue-examples (public).
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-family"'
+  - name: excludes-private
+    type: llm
+    criteria: |
+      PASS if the response leaves tinyqueue-internal-bench out of the public related-projects block
+      and says it is excluded because it is private.
+      FAIL if the public block links or lists tinyqueue-internal-bench.

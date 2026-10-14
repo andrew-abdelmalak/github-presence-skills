@@ -1,0 +1,29 @@
+schema_version: "1.1"
+name: audit-launch-readiness
+description: Natural phrasing triggers the audit; passing areas are not re-done.
+tags: [audit, trigger]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    What's missing from my GitHub project before I share it on Hacker News? Facts:
+    - README has a one-line description, install, and usage sections with working commands
+    - LICENSE is Apache-2.0
+    - The repository description is set; there are 0 topics
+    - No custom social preview image
+    - CONTRIBUTING.md exists; there is no SECURITY.md
+    - Every version tag has a published GitHub Release with notes
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-audit"'
+  - name: finds-real-gaps
+    type: llm
+    criteria: |
+      PASS if the response identifies the missing topics and social preview (routed to
+      github-discoverability) and the missing SECURITY.md (routed to github-community-files) as the
+      open items, and treats the README, license, and releases as already passing.
+      Suggesting to expand a one-line README introduction is acceptable.
+      FAIL if it says the README lacks install or usage sections, recommends adding a license, or
+      recommends publishing releases.

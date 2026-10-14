@@ -1,0 +1,33 @@
+schema_version: "1.1"
+name: community-contributing-from-ci
+description: CONTRIBUTING uses the exact CI commands and the detected commit convention.
+tags: [community, trigger, facts]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Write a CONTRIBUTING.md for acme-labs/tinyqueue. Facts:
+    - The CI workflow runs `uv sync`, then `uv run pytest -q`, then `uv run ruff check .`
+    - Default branch is main
+    - 46 of the last 50 commit subjects follow Conventional Commits (feat:, fix:, docs:)
+    - No DCO or CLA. License is MIT.
+    Give me the file content.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-community-files"'
+  - name: test-command
+    type: regex
+    pattern: 'uv run pytest -q'
+  - name: lint-command
+    type: regex
+    pattern: 'uv run ruff check \.'
+  - name: no-invented-commitments
+    type: llm
+    criteria: |
+      PASS if the CONTRIBUTING.md documents Conventional Commits, says to branch from or target
+      main, and links or refers to the MIT license for contributions, without inventing
+      commitments such as a guaranteed review time.
+      FAIL if it invents a specific review or response time, or uses commands other than the ones
+      given.

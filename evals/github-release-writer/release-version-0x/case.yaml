@@ -1,0 +1,31 @@
+schema_version: "1.1"
+name: release-version-0x
+description: A breaking change below 1.0 bumps MINOR, with a migration note and credits.
+tags: [release, trigger, semver]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Write release notes for the next tinyqueue release. The last release is v0.4.0. Commits since:
+    - feat(worker): add per-job timeout (#41, @dana-k, first contribution)
+    - fix(sqlite): close connections on shutdown (#43)
+    - feat!: rename Queue.put to Queue.enqueue (#45)
+    - ci: test on Python 3.13 (#44)
+    - chore(deps): bump pytest (#47)
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-release-writer"'
+  - name: version
+    type: regex
+    pattern: '0\.5\.0'
+  - name: notes-quality
+    type: llm
+    criteria: |
+      PASS if the response recommends v0.5.0 and explains that a breaking change bumps MINOR while
+      the version is below 1.0 (mentioning 1.0.0 as an alternative is fine); gives a migration note
+      from Queue.put to Queue.enqueue; credits @dana-k; and keeps the CI and dependency commits out
+      of the main New/Fixed/Breaking sections.
+      FAIL if it recommends v0.4.1 or v1.0.0 as the default, omits the migration note, or lists CI
+      changes as user-facing features.

@@ -1,0 +1,12 @@
+# CODEOWNERS: who is asked to review changes to which paths.
+# GitHub reads this file from .github/, the root, or docs/ (first found).
+# The LAST matching pattern wins, so keep the catch-all line first.
+# Owners need write access to the repository, or review requests are skipped.
+
+# Default owners for everything
+*                       {{DEFAULT_OWNERS}}
+
+# Area owners (examples; replace with real paths and owners)
+# /docs/                @{{DOCS_OWNER}}
+# /.github/workflows/   @{{ORG}}/{{INFRA_TEAM}}
+# *.sql                 @{{DATA_OWNER}}

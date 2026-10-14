@@ -1,0 +1,16 @@
+# Plugin eval output (written by `claude plugin eval`)
+evals/results/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local scratch
+.env
+*.local.md

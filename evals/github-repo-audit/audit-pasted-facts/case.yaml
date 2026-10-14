@@ -1,0 +1,33 @@
+schema_version: "1.1"
+name: audit-pasted-facts
+description: Audit from pasted facts (no gh), routing each fix to the right sibling skill.
+tags: [audit, trigger, routing]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Audit my repository acme-labs/tinyqueue. gh isn't available here, so here is what I have:
+    - Description: (empty). Topics: none. Website: none.
+    - Files at root: README.md, LICENSE (MIT), pyproject.toml, tinyqueue/, tests/, .github/workflows/tests.yml
+    - README.md is 12 lines: a title and the sentence "A tiny job queue." No install or usage sections.
+    - pyproject.toml: name = "tinyqueue", requires-python = ">=3.10".
+    - Tags: v0.1.0, v0.2.0. GitHub Releases: none.
+    - No CONTRIBUTING, SECURITY, or CODE_OF_CONDUCT files. No issue templates.
+    It's a library I want other developers to use.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-audit"'
+  - name: names-readme-writer
+    type: regex
+    pattern: 'github-readme-writer'
+  - name: routes-fixes
+    type: llm
+    criteria: |
+      PASS if the response gives verdicts tied to the facts provided, and its ranked fixes route
+      (a) the missing install and usage sections to github-readme-writer,
+      (b) the empty description and topics to github-discoverability, and
+      (c) tags without published releases to github-release-writer.
+      FAIL if it claims to have changed files or run commands, or if it presents a made-up
+      percentage or letter grade as its own score.

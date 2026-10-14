@@ -1,0 +1,25 @@
+schema_version: "1.1"
+name: release-version-1x
+description: A backward-compatible feature after 1.0 bumps MINOR, in a realistic release request.
+tags: [release, semver]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Draft the next release of acme-labs/logslice. We're at v1.4.2. Merged since then:
+    feat(cli): add --json output (#88, @priya-n); fix(parser): handle empty lines (#90);
+    docs: fix typo (#91). Pick the version and write the notes.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-release-writer"'
+  - name: version
+    type: regex
+    pattern: '1\.5\.0'
+  - name: reasoning
+    type: llm
+    criteria: |
+      PASS if the response recommends v1.5.0 because a backward-compatible feature was added and
+      nothing breaks.
+      FAIL if it recommends v2.0.0 or v1.4.3 as the next version.

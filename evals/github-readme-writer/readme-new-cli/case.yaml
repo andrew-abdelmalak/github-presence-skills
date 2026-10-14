@@ -1,0 +1,35 @@
+schema_version: "1.1"
+name: readme-new-cli
+description: New README from stated facts; no unverified registry install.
+tags: [readme, trigger, facts]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Write the README for my CLI. Facts from the repo:
+    - pyproject.toml: name = "logslice", requires-python = ">=3.10", no dependencies,
+      [project.scripts] logslice = "logslice.cli:main"
+    - The argparse setup defines: FILE, --from TIME, --to TIME, --request-id ID,
+      --format {auto,json,clf}, -o/--output PATH
+    - CI workflow: .github/workflows/tests.yml
+    - LICENSE is Apache-2.0. Remote is acme-labs/logslice.
+    - It is NOT published on PyPI.
+    Just give me the README content.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-readme-writer"'
+  - name: mentions-license
+    type: regex
+    pattern: 'Apache'
+  - name: readme-quality
+    type: llm
+    criteria: |
+      PASS if the README has a "logslice" H1, a one-line description of what the tool does, an
+      install section that installs from the GitHub source (for example pipx or pip with a git+https
+      URL), an options or usage section covering the listed flags, and a license line naming
+      Apache 2.0; and it does not present `pip install logslice` or `pipx install logslice` as a
+      working command (mentioning it only as a TODO for after publishing is fine).
+      FAIL if it presents a PyPI install as working, invents flags or output, or uses hype words
+      such as "blazing fast" or "revolutionary".

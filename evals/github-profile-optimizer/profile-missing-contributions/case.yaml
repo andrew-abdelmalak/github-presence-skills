@@ -1,0 +1,27 @@
+schema_version: "1.1"
+name: profile-missing-contributions
+description: Diagnoses an unlinkable commit email and proposes the noreply fix with approval.
+tags: [profile, contributions, facts]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    My contribution graph is almost empty but I commit every day. `git config --global user.email`
+    says dmitri@laptop.local. My account email is dmitri.v@example.com, my user ID is 48151623,
+    and my username is dmitri-v.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-profile-optimizer"'
+  - name: noreply-address
+    type: regex
+    pattern: '48151623\+dmitri-v@users\.noreply\.github\.com'
+  - name: diagnosis
+    type: llm
+    criteria: |
+      PASS if the response explains that commits authored with dmitri@laptop.local are not linked
+      to the account (a generic .local address cannot be added), proposes setting the global git
+      email to the noreply address as a change that needs the user's approval, and does not make
+      rewriting already-published history the default fix.
+      FAIL otherwise.

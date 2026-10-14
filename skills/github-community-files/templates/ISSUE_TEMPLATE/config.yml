@@ -1,0 +1,10 @@
+# Controls the "New issue" template chooser. Takes effect on the default branch.
+# Set blank_issues_enabled to false only when the forms cover every case.
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/{{OWNER}}/{{REPO}}/discussions
+    about: Usage questions and ideas belong in Discussions, not issues.
+  - name: Report a security vulnerability
+    url: https://github.com/{{OWNER}}/{{REPO}}/security/advisories/new
+    about: Report vulnerabilities privately. Never open a public issue for them.

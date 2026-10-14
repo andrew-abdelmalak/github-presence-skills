@@ -1,0 +1,29 @@
+schema_version: "1.1"
+name: disc-description-topics
+description: Description and valid topics, applied only through an approved gh repo edit.
+tags: [discoverability, trigger, approval]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Nobody finds my repo acme-labs/logslice. It's a Python CLI that cuts large JSON and Common Log
+    Format log files down to a time window or a request ID without loading them into memory.
+    Current description: "my log tool". No topics. Fix the description and topics. You can't run
+    gh here, so skip the topic lookups and tell me which ones you'd verify.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-discoverability"'
+  - name: edit-command
+    type: regex
+    pattern: 'gh repo edit acme-labs/logslice'
+  - name: valid-proposal
+    type: llm
+    criteria: |
+      PASS if the response proposes one specific description sentence about what the tool does;
+      proposes between 5 and 20 topics, all made only of lowercase letters, digits, and hyphens;
+      shows a gh repo edit command that is presented for the user's approval or for the user to run,
+      never claimed as already applied; and does not promise a better search ranking.
+      FAIL if any topic is invalid (uppercase, spaces, underscores), there are more than 20, it
+      claims the change is already applied, or it promises ranking.

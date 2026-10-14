@@ -1,0 +1,27 @@
+schema_version: "1.1"
+name: community-coc-not-from-memory
+description: The code of conduct is fetched verbatim, never written from memory.
+tags: [community, policy-text]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Add a code of conduct to my project. I can't run commands in this session, so just tell me
+    what you'd do. Reports should go to conduct@acme-labs.example.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-community-files"'
+  - name: names-covenant
+    type: regex
+    pattern: 'Contributor Covenant|contributor_covenant'
+  - name: fetch-not-paraphrase
+    type: llm
+    criteria: |
+      PASS if the response recommends Contributor Covenant 3.0, explains that the official text
+      must be fetched verbatim (for example with the gh api command to the EthicalSource
+      contributor_covenant repository), and says the reporting placeholder will be filled with
+      conduct@acme-labs.example.
+      FAIL if it writes out its own full code of conduct text, or a paraphrase of the covenant's
+      sections, as the file content.

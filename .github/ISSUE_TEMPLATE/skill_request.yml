@@ -1,0 +1,22 @@
+name: Skill or feature request
+description: Suggest a new skill or a change to an existing one.
+title: "[Request]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What GitHub presence problem should this solve?
+      description: Describe what you are trying to do, and where the current skills fall short.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Example prompts, and what a good result looks like.
+  - type: textarea
+    id: overlap
+    attributes:
+      label: Overlap with existing skills
+      description: Which current skill comes closest, and why extending it would or would not work.

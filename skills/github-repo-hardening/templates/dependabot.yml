@@ -1,0 +1,26 @@
+# .github/dependabot.yml: weekly, grouped dependency updates with a cooldown.
+# Keep one entry per ecosystem that actually exists in the repository.
+# Security updates are not delayed by the cooldown.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]
+    cooldown:
+      default-days: 7
+
+  # Example for a second ecosystem; replace or delete.
+  - package-ecosystem: "{{ECOSYSTEM}}"   # npm, pip, cargo, gomod, maven, gradle, bundler, composer, nuget, docker, ...
+    directory: "{{MANIFEST_DIRECTORY}}"  # usually /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+    cooldown:
+      default-days: 7
+      semver-major-days: 14
