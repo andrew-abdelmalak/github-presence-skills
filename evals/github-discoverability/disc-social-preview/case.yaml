@@ -1,0 +1,24 @@
+schema_version: "1.1"
+name: disc-social-preview
+description: Social preview brief uses verified specs and the manual upload path.
+tags: [discoverability, facts]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Make a social preview image plan for acme-labs/logslice. My tagline idea: "Cut huge logs to
+    the minutes that matter".
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-discoverability"'
+  - name: size
+    type: regex
+    pattern: '1280'
+  - name: specs-and-upload
+    type: llm
+    criteria: |
+      PASS if the brief states a 1280x640 size and a file under 1 MB, keeps the text short (name
+      and tagline), and says the image is uploaded manually in the repository's Settings.
+      FAIL if it claims to have uploaded the image, or gives an API or gh command for uploading it.

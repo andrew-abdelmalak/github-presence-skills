@@ -1,0 +1,15 @@
+# FUNDING.yml: adds a Sponsor button to the repository.
+# Must live in .github/ on the default branch. Keep only lines with real handles.
+# github: up to four usernames plus one organization. custom: up to four URLs.
+# Quote URLs inside arrays when they contain ":".
+
+github: [{{GITHUB_SPONSORS_USERNAME}}]
+# open_collective: {{OPEN_COLLECTIVE_SLUG}}
+# ko_fi: {{KO_FI_USERNAME}}
+# liberapay: {{LIBERAPAY_USERNAME}}
+# patreon: {{PATREON_USERNAME}}
+# polar: {{POLAR_USERNAME}}
+# buy_me_a_coffee: {{BUY_ME_A_COFFEE_USERNAME}}
+# thanks_dev: u/gh/{{USERNAME}}
+# tidelift: {{PLATFORM}}/{{PACKAGE}}
+# custom: ["{{URL}}"]

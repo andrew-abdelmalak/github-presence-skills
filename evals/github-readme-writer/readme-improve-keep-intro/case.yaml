@@ -1,0 +1,40 @@
+schema_version: "1.1"
+name: readme-improve-keep-intro
+description: Improve mode keeps the author's paragraph and fixes stale or wrong content.
+tags: [readme, improve]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Improve this README, but keep my paragraph that starts "Fluxboard shows" exactly as it is.
+
+    ```
+    # Fluxboard
+    Welcome to Fluxboard!!! The most blazing fast, revolutionary dashboard ever.
+
+    Fluxboard shows every webhook delivery your services send, with retries and payload diffs, so you can see why an integration broke.
+
+    [![build](https://travis-ci.org/acme-labs/fluxboard.svg)](https://travis-ci.org/acme-labs/fluxboard)
+
+    ## Installation
+    npm i fluxboard
+    ```
+
+    Facts: package.json has "private": true and scripts dev = "vite" and build = "vite build".
+    There is no .travis.yml; CI is .github/workflows/ci.yml. LICENSE is MIT.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-readme-writer"'
+  - name: keeps-paragraph
+    type: regex
+    pattern: 'Fluxboard shows every webhook delivery your services send, with retries and payload diffs, so you can see why an integration broke\.'
+  - name: fixes-content
+    type: llm
+    criteria: |
+      PASS if the improved README drops the "Welcome ... blazing fast, revolutionary" line, removes
+      or replaces the Travis badge (a GitHub Actions badge for ci.yml is acceptable), replaces
+      `npm i fluxboard` because the package is private (for example with clone, install, and
+      `npm run dev` steps), and adds an MIT license section.
+      FAIL if it keeps `npm i fluxboard` as the install command or keeps the Travis badge.

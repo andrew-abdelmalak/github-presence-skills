@@ -1,0 +1,51 @@
+name: Bug report
+description: A skill did something wrong, missed a trigger, or gave incorrect GitHub facts.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. For security problems (for example, a skill running a remote command without approval), use SECURITY.md instead.
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - github-repo-audit
+        - github-readme-writer
+        - github-community-files
+        - github-discoverability
+        - github-release-writer
+        - github-profile-optimizer
+        - github-repo-family
+        - github-upstream-contributor
+        - Shared references or the whole package
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What you asked
+      description: The prompt or slash command, and anything relevant about the repository it ran in.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Output of `claude --version`, and the plugin version (from /plugin) or the commit you cloned.
+      placeholder: "2.1.296 (Claude Code), github-presence-skills 0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      description: Which Claude model the session used, if you know.

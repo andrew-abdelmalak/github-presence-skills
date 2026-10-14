@@ -1,0 +1,31 @@
+schema_version: "1.1"
+name: family-related-block
+description: Related-projects block with markers, current repository marked and not self-linked.
+tags: [family, trigger]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Add a related projects section to my repos. The family is:
+    - acme-labs/tinyqueue: "Dependency-free job queue for Python scripts, backed by SQLite"
+    - acme-labs/tinyqueue-redis: "Redis storage backend for tinyqueue"
+    - acme-labs/tinyqueue-dashboard: "Web dashboard for tinyqueue workers"
+    Show me the block for tinyqueue-redis.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-family"'
+  - name: start-marker
+    type: regex
+    pattern: 'related-projects:start'
+  - name: end-marker
+    type: regex
+    pattern: 'related-projects:end'
+  - name: current-marked
+    type: llm
+    criteria: |
+      PASS if the block for tinyqueue-redis marks tinyqueue-redis as the current repository (for
+      example in bold with "this repository") without linking to itself, and links tinyqueue and
+      tinyqueue-dashboard with their descriptions.
+      FAIL otherwise.

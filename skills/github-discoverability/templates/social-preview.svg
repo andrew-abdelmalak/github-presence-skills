@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <!--
+    Social preview starter for github-discoverability.
+    Replace {{PLACEHOLDERS}}. Colors: BACKGROUND, ACCENT, TEXT, MUTED.
+    Keep all content inside the 80 px safe margin (x 80-1200, y 80-560).
+    Long taglines: shorten to 4-10 words, or split across the two tspan lines.
+  -->
+  <title id="title">{{PROJECT_NAME}}</title>
+  <desc id="desc">{{TAGLINE}}</desc>
+
+  <rect width="1280" height="640" fill="{{BACKGROUND|#0F172A}}"/>
+  <rect x="0" y="0" width="16" height="640" fill="{{ACCENT|#38BDF8}}"/>
+
+  <!-- Mark: a simple rounded square with the project's initial. Replace with a logo <path> or <image> if one exists. -->
+  <rect x="80" y="96" width="120" height="120" rx="24" fill="{{ACCENT|#38BDF8}}"/>
+  <text x="140" y="181" text-anchor="middle"
+        font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="72" font-weight="700" fill="{{BACKGROUND|#0F172A}}">{{INITIAL}}</text>
+
+  <text x="80" y="340"
+        font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="96" font-weight="800" fill="{{TEXT|#F8FAFC}}">{{PROJECT_NAME}}</text>
+
+  <text font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="40" font-weight="400" fill="{{MUTED|#CBD5E1}}">
+    <tspan x="80" y="410">{{TAGLINE_LINE_1}}</tspan>
+    <tspan x="80" y="462">{{TAGLINE_LINE_2}}</tspan>
+  </text>
+
+  <text x="80" y="548"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
+        font-size="28" fill="{{ACCENT|#38BDF8}}">github.com/{{OWNER}}/{{REPO}}</text>
+</svg>

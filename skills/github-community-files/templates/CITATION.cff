@@ -1,0 +1,26 @@
+# CITATION.cff: adds "Cite this repository" to the GitHub sidebar (APA and BibTeX).
+# Must be at the root of the default branch. Format: https://citation-file-format.github.io/
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "{{TITLE}}"
+abstract: "{{ONE_PARAGRAPH_ABSTRACT}}"
+authors:
+  - family-names: "{{FAMILY_NAME}}"
+    given-names: "{{GIVEN_NAMES}}"
+    orcid: "https://orcid.org/{{ORCID}}"
+version: "{{VERSION}}"
+date-released: "{{YYYY-MM-DD}}"
+license: "{{SPDX_LICENSE_ID}}"
+repository-code: "https://github.com/{{OWNER}}/{{REPO}}"
+keywords:
+  - "{{KEYWORD}}"
+# If a paper should be cited instead of the software, add a preferred-citation block:
+# preferred-citation:
+#   type: article
+#   title: "{{PAPER_TITLE}}"
+#   authors:
+#     - family-names: "{{FAMILY_NAME}}"
+#       given-names: "{{GIVEN_NAMES}}"
+#   journal: "{{JOURNAL}}"
+#   year: {{YEAR}}
+#   doi: "{{DOI}}"

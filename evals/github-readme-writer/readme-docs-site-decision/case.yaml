@@ -1,0 +1,24 @@
+schema_version: "1.1"
+name: readme-docs-site-decision
+description: A 900-line API reference goes to docs or a Pages site, not the README.
+tags: [readme, pages]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    My TypeScript library's README is 900 lines, mostly a full API reference for about 120
+    functions. Should all of that stay in the README? What would you do?
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-readme-writer"'
+  - name: recommends-site
+    type: llm
+    criteria: |
+      PASS if the response recommends moving the API reference out of the README into docs/ or a
+      documentation site, names at least one generator suited to TypeScript or JavaScript (such as
+      Docusaurus, VitePress, or Starlight), mentions publishing with GitHub Pages (for example via
+      an Actions workflow), and says the README should keep the introduction, install, quick start,
+      and a link to the docs.
+      FAIL if it advises keeping the full reference in the README.

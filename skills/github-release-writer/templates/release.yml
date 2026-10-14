@@ -1,0 +1,27 @@
+# .github/release.yml: categories for GitHub's automatically generated release notes.
+# Each category lists PR labels. A PR goes into the first category whose labels match.
+# Labels must exist in the repository (check with: gh label list).
+changelog:
+  exclude:
+    labels:
+      - ignore-for-release
+  categories:
+    - title: Breaking changes
+      labels:
+        - breaking-change
+    - title: New features
+      labels:
+        - enhancement
+        - feature
+    - title: Bug fixes
+      labels:
+        - bug
+    - title: Documentation
+      labels:
+        - documentation
+    - title: Dependencies
+      labels:
+        - dependencies
+    - title: Other changes
+      labels:
+        - "*"

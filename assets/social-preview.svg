@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">github-presence-skills</title>
+  <desc id="desc">Claude Code skills for an honest, well-documented GitHub presence</desc>
+
+  <rect width="1280" height="640" fill="#0F172A"/>
+  <rect x="0" y="0" width="16" height="640" fill="#2DD4BF"/>
+
+  <!-- Checklist mark -->
+  <g transform="translate(80 96)">
+    <rect width="132" height="132" rx="28" fill="#1E293B"/>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="9">
+      <path d="M26 40 l9 9 l15 -18" stroke="#2DD4BF"/>
+      <path d="M26 76 l9 9 l15 -18" stroke="#2DD4BF"/>
+      <path d="M62 40 h44" stroke="#F8FAFC"/>
+      <path d="M62 76 h44" stroke="#F8FAFC"/>
+      <path d="M62 108 h28" stroke="#64748B"/>
+    </g>
+  </g>
+
+  <text x="80" y="340" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="84" font-weight="800" fill="#F8FAFC">github-presence-skills</text>
+
+  <text font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="40" fill="#CBD5E1">
+    <tspan x="80" y="410">Claude Code skills for an honest,</tspan>
+    <tspan x="80" y="462">well-documented GitHub presence</tspan>
+  </text>
+
+  <text x="80" y="548" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
+        font-size="28" fill="#2DD4BF">audit · README · community files · topics · releases · profile</text>
+</svg>

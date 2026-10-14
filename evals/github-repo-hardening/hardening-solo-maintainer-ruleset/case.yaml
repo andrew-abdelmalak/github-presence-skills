@@ -1,0 +1,26 @@
+schema_version: "1.1"
+name: hardening-solo-maintainer-ruleset
+description: A solo maintainer gets a ruleset that cannot lock them out, applied only after approval.
+tags: [hardening, trigger, approval]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Protect the main branch of acme-labs/tinyqueue. It's public, I'm the only maintainer, and CI
+    reports one check named "test". I can't run gh in this session; just give me what to run.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-hardening"'
+  - name: ruleset-command
+    type: regex
+    pattern: 'repos/acme-labs/tinyqueue/rulesets'
+  - name: no-lockout
+    type: llm
+    criteria: |
+      PASS if the proposed ruleset requires pull requests and the "test" status check, blocks force
+      pushes and branch deletion, and avoids locking out a solo maintainer (0 required approvals,
+      or the owner as a bypass actor), and the commands are presented for approval, not as done.
+      FAIL if it requires one or more approving reviews with no bypass for the only maintainer, or
+      claims the ruleset is already applied.

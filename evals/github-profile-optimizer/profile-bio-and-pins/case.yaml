@@ -1,0 +1,30 @@
+schema_version: "1.1"
+name: profile-bio-and-pins
+description: Goal-specific bio and pins; forks and course work excluded; no invented claims.
+tags: [profile, trigger]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Improve my GitHub profile. I'm job hunting for backend roles (Go, PostgreSQL). Username
+    dmitri-v. Current bio: "Developer". My public repos:
+    - pgwatch-lite: Go, PostgreSQL monitoring, 140 stars, README, MIT
+    - shortlink: Go and PostgreSQL URL shortener, README
+    - qrate: Go rate limiter, no README
+    - awesome-go: a fork, no commits of mine
+    - cs50-pset: course exercises
+    - go-retry: small Go library, README
+    I also have 3 merged PRs in acme-labs/tinyqueue. gh isn't available here.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-profile-optimizer"'
+  - name: bio-and-pins
+    type: llm
+    criteria: |
+      PASS if the response proposes a bio of about 160 characters or fewer that mentions backend
+      work with Go and PostgreSQL, without inventing an employer, title, or years of experience;
+      proposes pins that exclude awesome-go and cs50-pset and include pgwatch-lite; flags that
+      qrate needs a README before pinning; and says pins are set in the profile UI.
+      FAIL if it pins the fork or the course exercises, or invents credentials.

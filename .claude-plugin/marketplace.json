@@ -1,0 +1,33 @@
+{
+  "name": "github-presence-skills",
+  "owner": {
+    "name": "Andrew Abdelmalak",
+    "url": "https://github.com/andrew-abdelmalak"
+  },
+  "metadata": {
+    "description": "Claude Code skills for building an excellent GitHub presence."
+  },
+  "plugins": [
+    {
+      "name": "github-presence-skills",
+      "source": "./",
+      "description": "Claude Code skills for a stronger GitHub presence: repository audit, README writer, community health files, discoverability, release notes, repository hardening, profile optimizer, repository families, and upstream contributions.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Andrew Abdelmalak",
+        "url": "https://github.com/andrew-abdelmalak"
+      },
+      "homepage": "https://github.com/andrew-abdelmalak/github-presence-skills",
+      "license": "MIT",
+      "keywords": [
+        "github",
+        "readme",
+        "open-source",
+        "developer-experience",
+        "claude-code",
+        "skills"
+      ],
+      "category": "development"
+    }
+  ]
+}

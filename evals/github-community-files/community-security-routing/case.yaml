@@ -1,0 +1,31 @@
+schema_version: "1.1"
+name: community-security-routing
+description: SECURITY.md routes reports privately; enabling reporting needs approval; README skill stays out.
+tags: [community, routing, approval]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    I need a SECURITY.md and issue templates for my repo acme-labs/tinyqueue. Private
+    vulnerability reporting isn't enabled yet. Only the latest release gets fixes.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-community-files"'
+  - name: readme-skill-not-used
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-readme-writer"'
+    min: 0
+    max: 0
+    arm: both
+  - name: private-routing
+    type: llm
+    criteria: |
+      PASS if SECURITY.md tells reporters to use private reporting (the repository's
+      security/advisories/new link or a private channel) and never public issues; the issue
+      template config routes security reports away from public issues; and enabling private
+      vulnerability reporting is shown as a command awaiting approval
+      (gh api -X PUT repos/acme-labs/tinyqueue/private-vulnerability-reporting), not as already done.
+      FAIL otherwise.

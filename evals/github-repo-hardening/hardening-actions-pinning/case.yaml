@@ -1,0 +1,36 @@
+schema_version: "1.1"
+name: hardening-actions-pinning
+description: Finds unpinned actions and missing token permissions in a pasted workflow.
+tags: [hardening, actions]
+execution:
+  max_turns: 12
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Is this GitHub Actions workflow safe? How do I harden it?
+
+    ```yaml
+    name: tests
+    on: [push, pull_request_target]
+    jobs:
+      test:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+            with:
+              ref: ${{ github.event.pull_request.head.sha }}
+          - uses: some-org/setup-thing@main
+          - run: make test
+    ```
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-hardening"'
+  - name: finds-issues
+    type: llm
+    criteria: |
+      PASS if the response flags all three problems: checking out pull request code under
+      pull_request_target (runs untrusted code with secrets and write access), actions pinned to
+      movable refs (@v4, @main) instead of full commit SHAs, and no explicit least-privilege
+      permissions block; and it proposes a fixed workflow or the concrete changes.
+      FAIL if it misses the pull_request_target checkout risk.
