@@ -1,7 +1,6 @@
 ---
 name: github-repo-hardening
 description: "Audits and applies the security settings that make a repository trustworthy to adopters and contributors: a ruleset on the default branch, secret scanning and push protection, Dependabot alerts and grouped updates with a cooldown, private vulnerability reporting, CodeQL code scanning, pinned and least-privilege GitHub Actions, and an OpenSSF Scorecard. Every setting change waits for approval. Make sure to use this skill whenever the user mentions branch protection, rulesets, protecting main, secret scanning, Dependabot, CodeQL, Scorecard, pinning actions, workflow permissions, hardening or securing a repository, or asks whether a GitHub Actions workflow is safe, or which security features their plan allows on a private repository. Not for writing SECURITY.md (use github-community-files) or fixing vulnerable code."
-argument-hint: "[path | owner/repo] [audit | apply]"
 ---
 
 # Repository hardening

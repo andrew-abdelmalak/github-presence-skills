@@ -1,7 +1,6 @@
 ---
 name: github-discoverability
 description: "Improves how a repository is found and understood in GitHub search, topic pages, and link previews: the About description, up to 20 topics checked against GitHub's topic data, the website link, repository names and renames, and a 1280x640 social preview brief with an SVG starter. Applies changes with gh repo edit only after approval. Make sure to use this skill whenever the user mentions topics, the repository description or About section, discoverability, people not finding a repository, link previews or social preview images, or renaming a repository. Not for README content (use github-readme-writer)."
-argument-hint: "[path | owner/repo]"
 ---
 
 # Discoverability

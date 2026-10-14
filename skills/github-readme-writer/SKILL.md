@@ -1,7 +1,6 @@
 ---
 name: github-readme-writer
 description: "Writes or improves a repository README.md from the project's real files: summary, badges, install, quick start, usage, configuration, feature and troubleshooting tables, contributing, license. Detects the project type and decides when docs belong on a GitHub Pages site instead. Make sure to use this skill whenever the user wants a README written, rewritten, improved, or reviewed, asks how to document a project, or asks whether reference docs belong in the README, even if they only paste a README and ask for feedback. Not for profile READMEs (use github-profile-optimizer) or CONTRIBUTING.md (use github-community-files)."
-argument-hint: "[path] [new | improve]"
 ---
 
 # README writer

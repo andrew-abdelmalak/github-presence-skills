@@ -35,27 +35,8 @@ except ImportError:
 ROOT = Path(__file__).resolve().parents[1]
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
-KNOWN_KEYS = {
-    "name",
-    "description",
-    "when_to_use",
-    "argument-hint",
-    "arguments",
-    "disable-model-invocation",
-    "user-invocable",
-    "allowed-tools",
-    "disallowed-tools",
-    "model",
-    "effort",
-    "context",
-    "agent",
-    "background",
-    "hooks",
-    "paths",
-    "shell",
-    "metadata",
-    "license",
-    "compatibility",
+KNOWN_KEYS = {  # the Agent Skills spec set, enforced by skills-ref
+    "name", "description", "license", "compatibility", "metadata", "allowed-tools",
 }
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})")

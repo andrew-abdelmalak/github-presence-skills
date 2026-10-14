@@ -1,7 +1,6 @@
 ---
 name: github-community-files
 description: "Drafts GitHub community health files that match how the project really works: LICENSE, CONTRIBUTING.md, SECURITY.md, CODE_OF_CONDUCT.md, SUPPORT.md, issue forms, pull request template, CODEOWNERS, FUNDING.yml, CITATION.cff, and account-wide defaults in a .github repository. Make sure to use this skill whenever the user mentions any of these files, a security or vulnerability reporting policy, issue or pull request templates, a code of conduct, choosing a license, contribution guidelines, or a sponsor button. Not for README.md (use github-readme-writer)."
-argument-hint: "[path] [file names | all] [--account-defaults]"
 ---
 
 # Community files
