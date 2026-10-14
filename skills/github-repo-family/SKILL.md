@@ -1,7 +1,6 @@
 ---
 name: github-repo-family
 description: "Makes a set of related repositories read as one family: a consistency matrix across descriptions, topics, licenses, badges, and README sections, a shared family topic, a Related projects block kept in sync between marker comments in every README, and account-wide default community files. Changes go through pull requests or approved commands. Make sure to use this skill whenever the user wants several repositories cross-linked, made consistent, standardized, or given shared files, or mentions a related projects section. Not for a single repository (use github-repo-audit)."
-argument-hint: "[owner] [topic | name-prefix | repo list]"
 ---
 
 # Repository family

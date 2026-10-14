@@ -1,7 +1,6 @@
 ---
 name: github-repo-audit
 description: "Checks a repository before it is shared or made public, then audits how it presents itself and returns a scored checklist with ranked fixes: README, license, community health files, description, topics, social preview, releases, CI and security signals, and root layout, plus a pre-public secrets and history check. Read-only. Make sure to use this skill whenever the user asks what is missing from a repository, wants a repo reviewed or audited, asks whether a project is ready to share, launch, open source, or make public (including a private repository about to go public, where it checks for leaked secrets first), or asks how to improve a repository without naming one specific file. Not for writing the fixes: each fix names the skill that writes it."
-argument-hint: "[path | owner/repo] [pre-public]"
 ---
 
 # GitHub repository audit

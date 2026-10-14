@@ -1,7 +1,6 @@
 ---
 name: github-upstream-contributor
 description: "Guides a useful contribution to someone else's open source project: finds good first issue and help wanted issues that fit the user's skills, vets project health, AI-contribution policy, and existing pull requests, follows the project's CONTRIBUTING rules, and drafts the issue comment and pull request description. Forks, pushes, comments, and pull requests need approval. Make sure to use this skill whenever the user wants to contribute to open source, find a first issue, fix an issue in another project or someone else's repository, check a project's contribution or AI-assistance policy, or write a pull request description for an upstream repository, including requests for bulk or drive-by pull requests, which it refuses. Not for your own repository's files (use github-community-files)."
-argument-hint: "[owner/repo | language or topic]"
 ---
 
 # Upstream contributor

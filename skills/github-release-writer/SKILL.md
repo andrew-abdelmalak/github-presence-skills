@@ -1,7 +1,6 @@
 ---
 name: github-release-writer
 description: "Drafts GitHub release notes and CHANGELOG.md entries from commits, merged pull requests, and tags, recommends the next semantic version with evidence, writes migration notes for breaking changes, and sets up .github/release.yml and a commit convention. Publishes with gh release create only after approval. Make sure to use this skill whenever the user mentions release notes, a changelog, the next version number, semantic versioning, tagging, or cutting or publishing a release. Not for writing individual commit messages."
-argument-hint: "[path] [notes | changelog | setup | publish] [version]"
 ---
 
 # Release writer

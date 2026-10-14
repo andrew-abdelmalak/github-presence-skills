@@ -1,7 +1,6 @@
 ---
 name: github-profile-optimizer
 description: "Audits and rewrites a GitHub personal or organization profile for a goal such as a job search: profile README, bio, links, the six pinned repositories, and the organization README in .github/profile. Diagnoses real contributions missing from the contribution graph and handles stats cards honestly. Make sure to use this skill whenever the user mentions their GitHub profile, bio, pinned repositories, profile README, contribution graph or streaks, or how their GitHub looks to recruiters, including requests to fake or backdate activity, which it refuses. Not for repository READMEs (use github-readme-writer)."
-argument-hint: "[username | org] [goal]"
 ---
 
 # Profile optimizer
