@@ -19,7 +19,11 @@ jobs:
           python-version: "3.13"
 
       - name: Install Python tools
-        run: python -m pip install --quiet "pyyaml==6.0.3" "skills-ref==0.1.1" "reuse==6.2.0"
+        # skills-ref is installed from its official source at a pinned commit: the PyPI
+        # release (0.1.1) does not install the `skills-ref` command.
+        run: |
+          python -m pip install --quiet "pyyaml==6.0.3" "reuse==6.2.0" \
+            "skills-ref @ git+https://github.com/agentskills/agentskills@f130f348f502d9804278a617f86929846896d2e9#subdirectory=skills-ref"
 
       - name: Self-test the checker
         run: python scripts/check_skills.py --self-test
