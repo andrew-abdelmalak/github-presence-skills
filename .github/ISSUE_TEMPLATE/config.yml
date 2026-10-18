@@ -3,3 +3,6 @@ contact_links:
   - name: Report a security vulnerability
     url: https://github.com/andrew-abdelmalak/github-presence-skills/security/advisories/new
     about: Report vulnerabilities privately. Never open a public issue for them.
+  - name: Ask a question
+    url: https://github.com/andrew-abdelmalak/github-presence-skills/discussions/categories/q-a
+    about: Questions about installing or using the skills. Issues are for bugs and skill requests.
