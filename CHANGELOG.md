@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Skills create commits, pull requests, issues, and release notes under the user's identity only, with no AI co-author or "Generated with" line, unless the user asks for attribution or another project's policy requires AI disclosure.
+
 ## [0.1.0] - 2026-10-18
 
 ### Added

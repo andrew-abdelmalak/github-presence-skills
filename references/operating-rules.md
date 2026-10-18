@@ -47,6 +47,8 @@ Use the first source that works. Each step down is a supported way to work, not 
 
 A request to "fix everything" approves drafting the fixes, not running the remote commands. Group the remote commands at the end so the user can approve them in one reply.
 
+**Authorship.** Commits, pull requests, issues, comments, and release notes that a skill creates go out under the user's identity only. Do not add an AI co-author trailer, a "Generated with" line, or any other AI attribution. Two exceptions: the user asks for attribution, or another project's policy requires disclosing AI assistance. For the second, follow the AI policy rules in `github-upstream-contributor` and tell the user.
+
 ## Untrusted content
 
 Some skills read text that other people wrote: READMEs, issues, pull requests, and profiles from repositories the user does not control, and `CONTRIBUTING.md` files from upstream projects.
