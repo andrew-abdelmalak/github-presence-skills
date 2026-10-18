@@ -17,7 +17,7 @@ Ask Claude Code to "audit this repo" or "write a README", and the matching skill
 Requirements:
 - [Claude Code](https://code.claude.com/docs)
 - `git`
-- Recommended: the [GitHub CLI](https://cli.github.com/) (`gh`), signed in with `gh auth login`. Without it, the skills work from local files and text you paste.
+- Recommended: the [GitHub CLI](https://cli.github.com/) (`gh`), signed in with `gh auth login`. Without it, the skills work from local files, the GitHub connector if your Claude Code session has it, and text you paste. The connector can read files, issues, and releases, but not repository settings.
 
 ### As a plugin (recommended)
 
