@@ -49,7 +49,7 @@ Severity levels:
 | C2 | `CONTRIBUTING.md` with real setup, test, and pull request steps | Important | `community.files.contributing`, local file | `github-community-files` |
 | C3 | `SECURITY.md` and private vulnerability reporting enabled | Important | `repo.isSecurityPolicyEnabled`, `private_vulnerability_reporting.enabled` | `github-community-files` |
 | C4 | `CODE_OF_CONDUCT.md` with a working reporting contact | Important | `community.files.code_of_conduct`, then look for an unfilled placeholder such as `[INSERT CONTACT METHOD]` or `[NOTE:` | `github-community-files` |
-| C5 | Issue forms, with `config.yml` routing questions elsewhere | Important | `repo.issueTemplates`, `github_dir` | `github-community-files` |
+| C5 | Issue forms, with `config.yml` routing questions elsewhere | Important | `issue_template_dir` (YAML forms and Markdown templates), or local `.github/ISSUE_TEMPLATE/`. `repo.issueTemplates` and `community.files.issue_template` miss YAML issue forms, so use them only to confirm presence, never absence | `github-community-files` |
 | C6 | Pull request template | Nice | `repo.pullRequestTemplates` | `github-community-files` |
 | C7 | `SUPPORT.md`, or support channels listed in `config.yml` `contact_links` | Nice | Local files | `github-community-files` |
 | C8 | `CODEOWNERS` when two or more maintainers own different areas | Nice | Local file | `github-community-files` |

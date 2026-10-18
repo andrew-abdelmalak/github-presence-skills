@@ -6,6 +6,7 @@
 # Exit:    0 success (individual fields may be null)
 #          2 bad usage
 #          3 gh CLI missing or not signed in
+#          4 repository not found or not visible
 #
 # A null field means that call failed: not found, no permission (branch
 # rules need admin on some repos), or rate limited. Treat null as Unknown.
@@ -24,6 +25,8 @@ if ! gh auth status >/dev/null 2>&1; then
   echo "gh is not signed in; the user can run 'gh auth login', or audit local files only" >&2
   exit 3
 fi
+
+gh repo view "$repo" --json name >/dev/null 2>&1 || { echo "repository not found or not visible to this gh account: $repo" >&2; exit 4; }
 
 # Print the output of a gh command if it succeeded and is non-empty, else null.
 fetch() {
@@ -57,6 +60,7 @@ printf '"workflows":%s,' "$(fetch gh api "repos/${repo}/actions/workflows" \
   --jq '[.workflows[] | {name, path, state}]')"
 printf '"root_files":%s,' "$(fetch gh api "repos/${repo}/contents/" --jq '[.[] | {name, type, size}]')"
 printf '"github_dir":%s,' "$(fetch gh api "repos/${repo}/contents/.github" --jq '[.[] | {name, type}]')"
+printf '"issue_template_dir":%s,' "$(fetch gh api "repos/${repo}/contents/.github/ISSUE_TEMPLATE" --jq '[.[] | .name]')"
 printf '"labels":%s,' "$(fetch gh api "repos/${repo}/labels?per_page=100" --jq '[.[].name]')"
 printf '"good_first_issues_open":%s,' "$(fetch gh api -X GET search/issues -f q="$gfi_query" --jq '.total_count')"
 if [[ -n "$branch" ]]; then

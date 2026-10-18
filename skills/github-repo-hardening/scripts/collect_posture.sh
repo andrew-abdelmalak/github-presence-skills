@@ -4,7 +4,8 @@
 # failed or was not permitted, and must be reported as Unknown.
 #
 # Usage:   collect_posture.sh OWNER/REPO
-# Exit:    0 success, 2 bad usage, 3 gh CLI missing or not signed in
+# Exit:    0 success, 2 bad usage, 3 gh CLI missing or not signed in,
+#          4 repository not found or not visible
 set -uo pipefail
 
 repo="${1:-}"
@@ -14,6 +15,7 @@ if [[ ! "$repo" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; then
 fi
 command -v gh >/dev/null 2>&1 || { echo "gh CLI not found" >&2; exit 3; }
 gh auth status >/dev/null 2>&1 || { echo "gh is not signed in" >&2; exit 3; }
+gh repo view "$repo" --json name >/dev/null 2>&1 || { echo "repository not found or not visible to this gh account: $repo" >&2; exit 4; }
 
 fetch() {
   local out
