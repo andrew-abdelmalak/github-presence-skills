@@ -15,7 +15,7 @@ precedence = "override"
 SPDX-FileCopyrightText = "2026 Andrew Abdelmalak"
 SPDX-License-Identifier = "CC0-1.0"
 
-# Contributor Covenant 3.0, fetched verbatim from its source.
+# Contributor Covenant 3.0, fetched from its source; only the reporting contact is filled in.
 [[annotations]]
 path = "CODE_OF_CONDUCT.md"
 precedence = "override"
