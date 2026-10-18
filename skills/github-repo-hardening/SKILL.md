@@ -46,7 +46,7 @@ Hardening progress:
 bash "${CLAUDE_SKILL_DIR}/scripts/collect_posture.sh" OWNER/REPO
 ```
 
-In a local clone, also read `.github/workflows/*.yml` and `.github/dependabot.yml` directly. The script only samples remote workflow files.
+In a local clone, also read `.github/workflows/*.yml` and `.github/dependabot.yml` directly. The script only samples remote workflow files. Exit code 4 means the repository was not found or is not visible to the signed-in account: confirm the name with the user.
 
 **3. Check plan limits** in [github-facts.md](../../references/github-facts.md#security-reporting) and [references/controls.md](references/controls.md#plan-limits). Rulesets on private repositories need GitHub Pro, Team, or Enterprise Cloud. Code scanning and secret scanning on private repositories need GitHub Code Security or Secret Protection. Report these as **Not available on this plan**, with what unlocks them, rather than as failures.
 

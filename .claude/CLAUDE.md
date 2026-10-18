@@ -1,6 +1,6 @@
 # Maintainer conventions for github-presence-skills
 
-Read this before changing anything in this repository. These rules keep eight skills consistent and loadable.
+Read this before changing anything in this repository. These rules keep nine skills consistent and loadable.
 
 This file lives in `.claude/` rather than at the repository root on purpose: the repository root is also the plugin root, and `claude plugin validate` warns about a `CLAUDE.md` at a plugin root.
 

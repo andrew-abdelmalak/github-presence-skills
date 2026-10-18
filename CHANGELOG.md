@@ -7,16 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-18
+
 ### Added
 
-- Eight skills: `github-repo-audit`, `github-readme-writer`, `github-community-files`, `github-discoverability`, `github-release-writer`, `github-profile-optimizer`, `github-repo-family`, and `github-upstream-contributor`.
+- Nine skills: `github-repo-audit`, `github-readme-writer`, `github-community-files`, `github-discoverability`, `github-release-writer`, `github-repo-hardening`, `github-profile-optimizer`, `github-repo-family`, and `github-upstream-contributor`.
+- `github-repo-hardening`: rulesets, secret scanning and push protection, Dependabot with cooldown, private vulnerability reporting, CodeQL, Actions pinning and permissions, and OpenSSF Scorecard, with a read-only posture collector.
 - Shared references: operating rules, verified GitHub facts, writing style, and badge guidance.
 - `collect_repo_facts.sh`: read-only GitHub data collection for audits.
-- `scripts/check_skills.py`: frontmatter, link, symlink, README, manifest, and eval-coverage checks, run in CI.
-- Plugin evals: three or more cases per skill.
-- `github-repo-hardening`: rulesets, secret scanning and push protection, Dependabot with cooldown, private vulnerability reporting, CodeQL, Actions pinning and permissions, and OpenSSF Scorecard, with a read-only posture collector.
 - `lint_readme.py`: a deterministic README checker used by `github-readme-writer`.
 - README guidance: honest status labels, a Maintainers section, and architecture diagram rules. Profile README styles. Listing beyond GitHub. Socialify and release-drafter as options.
-- REUSE licensing: MIT for the package, CC0-1.0 for `skills/*/templates/`.
+- `scripts/check_skills.py`: frontmatter, link, symlink, README, manifest, and eval-coverage checks, run in CI with the official `skills-ref` validator and `reuse lint`.
+- Plugin evals: 28 cases, three or more per skill.
+- OpenSSF Scorecard workflow for this repository.
+- REUSE licensing: MIT for the package, CC0-1.0 for `skills/*/templates/`, CC-BY-SA-4.0 for `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/commits/main
+[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/andrew-abdelmalak/github-presence-skills/releases/tag/v0.1.0
