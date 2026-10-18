@@ -4,7 +4,7 @@
 
 # github-presence-skills
 
-Nine Claude Code skills that audit and improve how your repositories and profile present your work on GitHub: READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
+Claude Code skills that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
 
 [![validate](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/github/license/andrew-abdelmalak/github-presence-skills)](LICENSE)
