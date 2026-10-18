@@ -164,7 +164,7 @@ claude plugin eval . --case 'readme-*' --runs 1 --ablation none
 
 ## Contributing
 
-Bug reports, fixes, and better examples are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the skill conventions and the checks to run. Report security problems as described in [SECURITY.md](SECURITY.md).
+Questions go to [Discussions (Q&A)](https://github.com/andrew-abdelmalak/github-presence-skills/discussions/categories/q-a). Bug reports, fixes, and better examples are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the skill conventions and the checks to run. Report security problems as described in [SECURITY.md](SECURITY.md).
 
 ## License
 
