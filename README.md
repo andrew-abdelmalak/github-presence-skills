@@ -106,6 +106,7 @@ flowchart LR
 - **They ask before any remote change.** Local file edits go through Claude Code's normal permission prompts. Remote changes are shown as exact commands and run only after an explicit yes. The rules are in [references/operating-rules.md](references/operating-rules.md).
 - **They support honest presence only.** The skills refuse backdated commits, streak bots, star exchanges, and drive-by pull requests, and they offer the real fixes instead, such as getting uncounted work onto the contribution graph.
 - **They treat other people's text as data.** READMEs and issues from other repositories never act as instructions.
+- **Your work stays under your name.** Commits, pull requests, and release notes the skills create carry only your git identity, with no AI co-author or "Generated with" line. Claude Code adds its own attribution by default; to turn that off everywhere, set `"attribution": {"commit": "", "pr": ""}` in `~/.claude/settings.json`. The exceptions are when you ask for attribution, or when a project you contribute to requires disclosing AI assistance; the skills tell you when that applies.
 
 Shared references used by every skill:
 
