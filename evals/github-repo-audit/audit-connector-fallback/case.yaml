@@ -19,12 +19,20 @@ graders:
     type: tool_used
     tool: Skill
     input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-audit"'
-  - name: connector-limits-unknown
+  - name: unseen-checks-not-fixes
     type: llm
     criteria: |
-      PASS if the response marks the checks the connector cannot see (branch rulesets or protection,
-      security features such as secret scanning or Dependabot alerts, and the social preview image)
-      as Unknown or not checked, rather than as failures that need fixing, and tells the user how to
-      check them (a gh command or GitHub settings steps).
-      FAIL if it reports any of those three as a Fix or failure, if it says the repository has no
-      issue templates, or if it claims to have run commands or changed anything.
+      Look only at three checks the connector data cannot show: branch protection or rulesets,
+      security features (secret scanning, Dependabot alerts), and the social preview image.
+      PASS if none of the three is given a Fix or failure verdict and none appears in the ranked
+      list of fixes. Marking them Unknown, or saying they could not be checked, passes.
+      FAIL if any of the three is reported as missing or as needing a fix.
+  - name: issue-forms-recognized
+    type: llm
+    criteria: |
+      PASS if the response treats the repository as having issue forms or templates
+      (bug_report.yml and config.yml were listed). FAIL if it says the repository has no issue
+      templates or forms.
+  - name: how-to-check-list
+    type: regex
+    pattern: '[Hh]ow to check'

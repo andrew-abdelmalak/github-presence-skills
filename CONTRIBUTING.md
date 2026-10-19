@@ -30,6 +30,7 @@ Read [.claude/CLAUDE.md](.claude/CLAUDE.md). It is the full list, and it is what
 - **Frontmatter:** `name` matches the directory. `description` is written in the third person, says what the skill does and when to use it, ends with a "Not for X (use Y)" sentence, stays under 1,024 characters, and contains no em dashes.
 - **SKILL.md** stays under 500 lines. Detail goes in `references/`, linked one level deep.
 - **Facts about GitHub** go in [references/github-facts.md](references/github-facts.md), with a source link. Update the "Last verified" date when you re-check a fact.
+- **Shared files** in `references/` are copied into every skill's `references/shared/`. Edit only `references/`, then run `python3 scripts/check_skills.py --sync-shared`. CI fails if a copy is out of date.
 - **Every skill has three or more eval cases** in `evals/<skill>/`.
 - **Writing** follows [references/writing-style.md](references/writing-style.md).
 
@@ -38,11 +39,13 @@ Read [.claude/CLAUDE.md](.claude/CLAUDE.md). It is the full list, and it is what
 ```bash
 python3 scripts/check_skills.py --self-test
 python3 scripts/check_skills.py
+python3 skills/github-readme-writer/scripts/lint_readme.py README.md --repo-root .
+for f in skills/*/scripts/*.sh; do bash -n "$f"; done
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate .claude-plugin/marketplace.json --strict
 ```
 
-CI runs the same checks. Evals call the model, so they are not part of CI. Run the cases for the skill you changed before opening a pull request:
+CI runs these checks, plus the official `skills-ref` validator and `reuse lint`. Evals call the model, so they are not part of CI. Run the cases for the skill you changed before opening a pull request:
 
 ```bash
 claude plugin eval . --case '<skill-prefix>-*' --runs 1 --ablation none

@@ -2,7 +2,7 @@
 
 Platform rules and limits that the skills in this package depend on. Skills cite this file instead of repeating numbers, so a change on GitHub's side is fixed in one place.
 
-**Last verified:** 2026-10-12, against the source of docs.github.com (the `github/docs` repository), GitHub's site policy (`github/site-policy`), and live REST API responses. Before you rely on a fact for something irreversible, check the linked source again.
+**Last verified:** 2026-10-19, against the source of docs.github.com (the `github/docs` repository), GitHub's site policy (`github/site-policy`), and live REST API responses. Before you rely on a fact for something irreversible, check the linked source again.
 
 ## Contents
 
@@ -57,10 +57,11 @@ Platform rules and limits that the skills in this package depend on. Skills cite
 | File | Where GitHub looks | Notes |
 |---|---|---|
 | `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`, `ACCESSIBILITY.md` | `.github/`, then root, then `docs/` | Can be an account-wide default |
+| `VULNERABILITY_REPORT.yml` (or `.yaml`) | `.github/` | Can be an account-wide default |
 | `FUNDING.yml` | `.github/` only, default branch | Can be an account-wide default |
 | Issue templates and forms | `.github/ISSUE_TEMPLATE/` | Can be an account-wide default |
 | Discussion category forms | `.github/DISCUSSION_TEMPLATE/` | |
-| Pull request template | `pull_request_template.md` in root, `docs/`, or `.github/`. Several templates go in `.github/PULL_REQUEST_TEMPLATE/` and are chosen with the `?template=` query parameter. | |
+| Pull request template | `pull_request_template.md` in root, `docs/`, or `.github/`. Several templates go in `.github/PULL_REQUEST_TEMPLATE/` and are chosen with the `?template=` query parameter. | Can be an account-wide default |
 | `CODEOWNERS` | `.github/`, then root, then `docs/`; the first one found is used | Must be under 3 MB |
 | `CITATION.cff` | Root of the default branch | Adds **Cite this repository** (APA and BibTeX) |
 | `LICENSE` | Repository root | **Cannot** be an account-wide default |
@@ -71,7 +72,7 @@ Sources: [Creating a default community health file](https://docs.github.com/en/c
 
 **Community profile checklist.** For public repositories, GitHub checks for a README, `CODE_OF_CONDUCT`, `LICENSE`, `CONTRIBUTING`, issue templates, and a security policy. `gh api repos/OWNER/REPO/community/profile` returns `health_percentage` and the files it found. Markdown issue templates count only with valid `name:` and `about:` keys. ([About community profiles](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories))
 
-**Issue forms.** Every form must start with `name`, `description`, and `body`. The optional keys are `title`, `labels`, `assignees`, `type`, and `projects`. Labels that do not exist in the repository are not created. Forms work for issues only, not pull requests. `.github/ISSUE_TEMPLATE/config.yml` takes `blank_issues_enabled` and `contact_links`. Changes take effect once merged to the default branch. ([Syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms), [Configuring issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository))
+**Issue forms.** Every form must start with `name`, `description`, and `body`. The optional keys are `title`, `labels`, `assignees`, `type`, and `projects`. Labels that do not exist in the repository are not created. Forms work for issues only, not pull requests. `.github/ISSUE_TEMPLATE/config.yml` takes `blank_issues_enabled` and `contact_links`. Changes take effect once merged to the default branch. The GraphQL field `issueTemplates` and the community profile's `files.issue_template` do not report YAML issue forms (observed 2026-10-18 on a repository with two forms), so list `.github/ISSUE_TEMPLATE/` to check for them. ([Syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms), [Configuring issue templates](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository))
 
 **CODEOWNERS syntax.** Patterns follow gitignore rules except that `\#` escapes, `!` negation, and `[ ]` ranges do not work. The last matching pattern takes precedence. All owners for one pattern must be on the same line.
 
@@ -94,7 +95,7 @@ Sources: [Creating a default community health file](https://docs.github.com/en/c
 | Fact | Source |
 |---|---|
 | `SECURITY.md` should state the supported versions and how to report a vulnerability. | [Adding a security policy](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/add-security-policy) |
-| Owners and admins of a public repository can enable **private vulnerability reporting**, which adds a **Report a vulnerability** button. By default the form asks for a summary, details, proof of concept, and impact. `gh api repos/OWNER/REPO/private-vulnerability-reporting` returns `{"enabled": true|false}`. `PUT` on the same path enables it, and `DELETE` disables it. | [Configuring private vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository) |
+| Owners and admins of a public repository can enable **private vulnerability reporting**, which adds a **Report a vulnerability** button. By default the form asks for a summary, details, proof of concept, and impact. `gh api repos/OWNER/REPO/private-vulnerability-reporting` returns `{"enabled": true|false}`. `PUT` on the same path enables it, and `DELETE` disables it. In the UI: **Settings → Security and quality → Advanced Security**, next to **Private vulnerability reporting**. | [Configuring private vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository) |
 
 ## Releases
 
@@ -120,7 +121,7 @@ Other facts:
 - Updates can take up to 24 hours.
 - Adding a previously used email address to the account rebuilds past contributions. Generic addresses such as `jane@computer.local` can't be added.
 - Adding `.patch` to a commit URL shows the author email that was used.
-- The profile places commits by their **author date**.
+- The profile places commits by their **author date**; a repository shows the commit date.
 - Private contributions can be shown as anonymous daily counts.
 
 Sources: [Profile contributions reference](https://docs.github.com/en/account-and-profile/reference/profile-contributions-reference), [Troubleshooting missing contributions](https://docs.github.com/en/account-and-profile/how-tos/contribution-settings/troubleshooting-missing-contributions).
@@ -136,11 +137,11 @@ Sources: [Profile contributions reference](https://docs.github.com/en/account-an
 
 | Fact | Source |
 |---|---|
-| Rulesets are available in public repositories on GitHub Free, and in public and private repositories on GitHub Pro, Team, and Enterprise Cloud. | [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) |
-| Secret scanning runs automatically for free on public repositories. Private and internal organization repositories need GitHub Secret Protection. | GitHub Docs feature availability for secret scanning |
+| Rulesets are available in public repositories on GitHub Free, and in public and private repositories on GitHub Pro, Team, and Enterprise Cloud. A repository can have up to 75 rulesets. | [About rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) |
+| Secret scanning runs automatically for free on public repositories. Even so, the repository's `security_and_analysis.secret_scanning` and `secret_scanning_push_protection` settings can read `disabled` until they are turned on with `PATCH /repos/OWNER/REPO` (observed 2026-10-18), so check and enable both. The extra features `secret_scanning_non_provider_patterns` and `secret_scanning_validity_checks` need GitHub Secret Protection: on a public repository without it, a `PATCH` that enables them returns success but leaves them `disabled` (observed 2026-10-19). Private and internal organization repositories need GitHub Secret Protection. These settings are under **Settings → Security and quality → Advanced Security**. | [About secret scanning](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning) |
 | Code scanning is available for public repositories, and for organization-owned private repositories with GitHub Code Security. | GitHub Docs feature availability for code scanning |
 | `POST /repos/OWNER/REPO/rulesets` creates a ruleset. The `pull_request` rule requires `required_approving_review_count`, `dismiss_stale_reviews_on_push`, `require_code_owner_review`, `require_last_push_approval`, and `required_review_thread_resolution`. `PUT .../vulnerability-alerts`, `PUT .../automated-security-fixes`, and `PATCH .../code-scanning/default-setup` exist. | GitHub REST OpenAPI description |
-| Dependabot's `cooldown` option takes `default-days`, plus `semver-major-days`, `semver-minor-days`, and `semver-patch-days` where the ecosystem supports SemVer. | [Dependabot options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference) |
+| Dependabot's `cooldown` option takes `default-days` (3 days when unset), plus `semver-major-days`, `semver-minor-days`, and `semver-patch-days` where the ecosystem supports SemVer, and `include` and `exclude` lists (up to 150 entries each; `exclude` wins). | [Dependabot options reference](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference) |
 | If a repository has any valid issue template or `config.yml` in its own `.github/ISSUE_TEMPLATE`, none of the account-default issue templates are used for it. | [Creating a default community health file](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file) |
 
 ## GitHub Pages

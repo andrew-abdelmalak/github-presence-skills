@@ -46,11 +46,13 @@ Renaming a skill breaks users' habits and their eval filters. If you must rename
 ## Before every push
 
 ```bash
+python3 scripts/check_skills.py --sync-shared   # only after editing references/
 python3 scripts/check_skills.py --self-test
 python3 scripts/check_skills.py
+python3 skills/github-readme-writer/scripts/lint_readme.py README.md --repo-root .
+for f in skills/*/scripts/*.sh; do bash -n "$f"; done
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate .claude-plugin/marketplace.json --strict
-bash -n skills/github-repo-audit/scripts/collect_repo_facts.sh
 ```
 
 After a behavior change to a skill, also run its eval cases (`claude plugin eval . --case '<prefix>-*' --runs 1 --ablation none`). Evals cost model usage, so they are not part of CI.

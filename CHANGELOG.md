@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-10-19
+
+### Changed
+
+- GitHub facts re-verified against GitHub's documentation source on 2026-10-19, with additions: secret scanning settings that read `disabled` on public repositories, the features that need GitHub Secret Protection, the Advanced Security settings path, the 75-ruleset limit, Dependabot cooldown `include` and `exclude`, two more account-wide default files, and issue forms missing from two API fields.
+- `github-upstream-contributor` triggers on requests such as "help me fix issue #12 in owner/repo".
+- CONTRIBUTING and maintainer notes list every local check, and the `--sync-shared` step.
+
+### Fixed
+
+- Eval case `audit-connector-fallback` uses narrower graders and a regular expression the eval runner supports.
+
 ## [0.2.1] - 2026-10-19
 
 ### Added
@@ -46,7 +58,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OpenSSF Scorecard workflow for this repository.
 - REUSE licensing: MIT for the package, CC0-1.0 for `skills/*/templates/`, CC-BY-SA-4.0 for `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/andrew-abdelmalak/github-presence-skills/releases/tag/v0.1.0
