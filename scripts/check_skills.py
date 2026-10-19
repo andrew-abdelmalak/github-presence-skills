@@ -27,6 +27,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 import sys
 import unicodedata
 from pathlib import Path
@@ -210,7 +211,7 @@ def check_shared(skills: list[str], problems: list[str], sync: bool) -> None:
             shared.mkdir(parents=True, exist_ok=True)
             for extra in shared.glob("*"):
                 if extra.name not in sources:
-                    extra.unlink()
+                    shutil.rmtree(extra) if extra.is_dir() else extra.unlink()
             for fname, data in sources.items():
                 (shared / fname).write_bytes(data)
         for fname, data in sources.items():
