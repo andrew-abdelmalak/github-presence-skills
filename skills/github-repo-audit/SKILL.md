@@ -62,7 +62,7 @@ A `null` field means the call failed or needs more permission (branch rules, for
 
 **6. Pre-public checks.** In `pre-public` mode, run the "Before going public" checks in the checklist. Anything that could leak a secret or personal data blocks publishing until it is resolved. When `gitleaks` or `trufflehog` is installed, suggest running it and show the command. Do not install either tool.
 
-**7. Report** in the output shape from [operating-rules.md](../../references/operating-rules.md#output-shape). This skill has no commands awaiting approval. When checks are Unknown because the data tier cannot see them, end with a **How to check the Unknowns** list that gives the user one exact read-only command or settings path for each. For example: rulesets with `gh api repos/OWNER/REPO/rules/branches/BRANCH`, security features with `gh api repos/OWNER/REPO --jq .security_and_analysis` (or **Settings → Advanced Security**), and the social preview in **Settings → General → Social preview**.
+**7. Report** in the output shape from [operating-rules.md](../../references/operating-rules.md#output-shape). This skill has no commands awaiting approval. When checks are Unknown because the data tier cannot see them, close the **Result** part (before **Next step**) with a **How to check the Unknowns** list that gives the user one exact read-only command or settings path for each. For example: rulesets with `gh api repos/OWNER/REPO/rules/branches/BRANCH`, security features with `gh api repos/OWNER/REPO --jq .security_and_analysis` (or **Settings → Advanced Security**), and the social preview in **Settings → General → Social preview**.
 
 ## Hard rules
 
