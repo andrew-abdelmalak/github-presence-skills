@@ -69,7 +69,7 @@ A `null` field means the call failed or needs more permission (branch rules, for
 Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
 
 - **Read-only.** Do not create, edit, or delete files, and do not run any remote change, even if a fix is one line. Offer the sibling skill instead.
-- **Evidence or Unknown.** Every verdict cites what you saw. If you could not see it, the verdict is **Unknown**, not **Fix**. A pasted file list or summary is not proof that something is absent unless the user says it is complete, or explicitly says the thing is missing.
+- **Evidence or Unknown.** Every verdict cites what you saw. If you could not see it, the verdict is **Unknown**, not **Fix**, and it stays out of **Top fixes**: list it under **How to check the Unknowns** instead. A pasted file list or summary is not proof that something is absent unless the user says it is complete, or explicitly says the thing is missing.
 - **No invented scores.** Report counts of checks, not made-up percentages or grades. GitHub's `health_percentage` may be quoted as GitHub's figure.
 - **Never print secret values.** If a secret seems to be tracked, report the file path and the kind of secret only.
 
