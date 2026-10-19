@@ -21,5 +21,9 @@
     "github-profile",
     "claude-code",
     "skills"
-  ]
+  ],
+  "supportUrl": "https://github.com/andrew-abdelmalak/github-presence-skills/discussions/categories/q-a",
+  "documentationUrl": "https://github.com/andrew-abdelmalak/github-presence-skills#readme",
+  "privacyPolicyUrl": "https://github.com/andrew-abdelmalak/github-presence-skills#what-the-skills-run-and-send",
+  "termsOfServiceUrl": "https://github.com/andrew-abdelmalak/github-presence-skills/blob/main/LICENSE"
 }
