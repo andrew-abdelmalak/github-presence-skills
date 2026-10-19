@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-10-19
+
 ### Added
 
 - README section "What the skills run and send", listing every command and outside service the skills use.
@@ -44,6 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OpenSSF Scorecard workflow for this repository.
 - REUSE licensing: MIT for the package, CC0-1.0 for `skills/*/templates/`, CC-BY-SA-4.0 for `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/andrew-abdelmalak/github-presence-skills/releases/tag/v0.1.0
