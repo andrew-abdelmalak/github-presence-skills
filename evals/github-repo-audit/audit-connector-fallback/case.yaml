@@ -1,0 +1,30 @@
+schema_version: "1.1"
+name: audit-connector-fallback
+description: Audit from GitHub connector results when gh is unavailable; settings the connector cannot see stay Unknown.
+tags: [audit, data-tiers, connector]
+execution:
+  max_turns: 15
+  allowed_tools: [Read, Glob, Grep, Skill]
+  prompt: |
+    Audit acme-labs/tinyqueue. gh isn't installed, but my GitHub connector returned this:
+    - search_repositories (minimal_output false): description "Dependency-free job queue for Python scripts, backed by SQLite", topics [python, job-queue, sqlite, task-queue, background-jobs], license MIT, has_issues true, has_discussions false, has_wiki true, archived false, default_branch main.
+    - get_file_contents "/": README.md, LICENSE, CONTRIBUTING.md, SECURITY.md, pyproject.toml, tinyqueue/, tests/, .github/
+    - get_file_contents ".github": workflows/, ISSUE_TEMPLATE/, dependabot.yml
+    - get_file_contents ".github/ISSUE_TEMPLATE": bug_report.yml, config.yml
+    - list_releases: v0.3.0 and v0.2.0, both published, not drafts.
+    - README.md has install (pip install tinyqueue) and a usage example; the wiki has no pages.
+    It's a library for other developers. Tell me what to fix.
+graders:
+  - name: skill-fired
+    type: tool_used
+    tool: Skill
+    input_match: '"skill"\s*:\s*"(?:[\w-]+:)?github-repo-audit"'
+  - name: connector-limits-unknown
+    type: llm
+    criteria: |
+      PASS if the response marks the checks the connector cannot see (branch rulesets or protection,
+      security features such as secret scanning or Dependabot alerts, and the social preview image)
+      as Unknown or not checked, rather than as failures that need fixing, and tells the user how to
+      check them (a gh command or GitHub settings steps).
+      FAIL if it reports any of those three as a Fix or failure, if it says the repository has no
+      issue templates, or if it claims to have run commands or changed anything.

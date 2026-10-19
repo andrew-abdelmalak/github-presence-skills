@@ -20,9 +20,13 @@ Use the first source that works. Each step down is a supported way to work, not 
 |---|---|---|
 | 1 | Local repository files and `git` | The working directory, or a path the user gives, contains `.git/` |
 | 2 | GitHub CLI (`gh`) with an authenticated session | `gh auth status` exits 0 |
-| 3 | Text the user pastes | Neither of the above, or the data is private to a UI (for example, pinned items) |
+| 3 | GitHub connector: GitHub MCP tools such as `get_file_contents`, `list_issues`, `list_releases`, `search_repositories`, `create_pull_request` | `gh` is missing or signed out, and those tools are available in the session |
+| 4 | Text the user pastes | None of the above, or the data is private to a UI (for example, pinned items) |
 
-- If `gh` is missing or signed out, say which facts you cannot check and continue with tiers 1 and 3. Never ask the user for a token, and never run `gh auth login` for them.
+- If `gh` is missing or signed out, say which facts you cannot check and continue with the remaining tiers. Never ask the user for a token, and never run `gh auth login` for them.
+- **GitHub connector (tier 3).** Use it only when `gh` is unavailable. It can read files and directories, issues, pull requests, releases, tags, branches, and commits. `search_repositories` with `minimal_output: false` returns the description, topics, license, default branch, archived state, and the issues, Discussions, and wiki switches. It cannot read the homepage, the social preview, the community profile, rulesets or branch protection, security features, or GraphQL-only data such as pinned items, and it cannot change repository settings. Mark those checks **Unknown**, and give the `gh` command or the GitHub UI steps for the user to run.
+- Connector writes (a branch, a file commit, an issue, a comment, or a pull request) are remote changes. Show exactly what will be created and wait for an explicit yes, as with `gh`.
+- The bundled collector scripts need `gh`. With only the connector, collect the fields it can read, and name the fields that stay Unknown.
 - When both local files and GitHub hold the same fact (for example, a README), prefer the local file and say if the two differ. The local copy may hold unpushed work.
 - For live GitHub facts (topics, description, releases, settings), prefer `gh`. Local files cannot show them.
 

@@ -52,7 +52,7 @@ Audit progress:
 bash "${CLAUDE_SKILL_DIR}/scripts/collect_repo_facts.sh" OWNER/REPO
 ```
 
-A `null` field means the call failed or needs more permission (branch rules, for example). Report it as **Unknown**, never as **Fix**. If the script exits with code 3, `gh` is unavailable. Continue with local files and say which checks you could not run. If it exits with code 4, the repository was not found or is not visible to the signed-in account. Confirm the name with the user instead of reporting every check as Unknown.
+A `null` field means the call failed or needs more permission (branch rules, for example). Report it as **Unknown**, never as **Fix**. If the script exits with code 3, `gh` is unavailable. Continue with local files and, if they are available, the GitHub connector tools ([data sources](../../references/operating-rules.md#data-sources)), and say which checks you could not run. If it exits with code 4, the repository was not found or is not visible to the signed-in account. Confirm the name with the user instead of reporting every check as Unknown.
 
 **3. Scan local files.** Use Glob and Read on the working tree. Look for the README in `.github/`, root, and `docs/`, community files in their supported locations, `.github/workflows/`, manifests, `.gitignore`, and large or generated files. Run `git ls-files | head -200` to see what is tracked. Read only the parts of large files you need.
 
@@ -62,14 +62,14 @@ A `null` field means the call failed or needs more permission (branch rules, for
 
 **6. Pre-public checks.** In `pre-public` mode, run the "Before going public" checks in the checklist. Anything that could leak a secret or personal data blocks publishing until it is resolved. When `gitleaks` or `trufflehog` is installed, suggest running it and show the command. Do not install either tool.
 
-**7. Report** in the output shape from [operating-rules.md](../../references/operating-rules.md#output-shape). This skill has no commands awaiting approval.
+**7. Report** in the output shape from [operating-rules.md](../../references/operating-rules.md#output-shape). This skill has no commands awaiting approval. When checks are Unknown because the data tier cannot see them, close the **Result** part (before **Next step**) with a **How to check the Unknowns** list that gives the user one exact read-only command or settings path for each. For example: rulesets with `gh api repos/OWNER/REPO/rules/branches/BRANCH`, security features with `gh api repos/OWNER/REPO --jq .security_and_analysis` (or **Settings → Advanced Security**), and the social preview in **Settings → General → Social preview**.
 
 ## Hard rules
 
 Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
 
 - **Read-only.** Do not create, edit, or delete files, and do not run any remote change, even if a fix is one line. Offer the sibling skill instead.
-- **Evidence or Unknown.** Every verdict cites what you saw. If you could not see it, the verdict is **Unknown**, not **Fix**. A pasted file list or summary is not proof that something is absent unless the user says it is complete, or explicitly says the thing is missing.
+- **Evidence or Unknown.** Every verdict cites what you saw. If you could not see it, the verdict is **Unknown**, not **Fix**, and it stays out of **Top fixes**: list it under **How to check the Unknowns** instead. A pasted file list or summary is not proof that something is absent unless the user says it is complete, or explicitly says the thing is missing.
 - **No invented scores.** Report counts of checks, not made-up percentages or grades. GitHub's `health_percentage` may be quoted as GitHub's figure.
 - **Never print secret values.** If a secret seems to be tracked, report the file path and the kind of secret only.
 
