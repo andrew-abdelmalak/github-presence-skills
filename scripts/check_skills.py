@@ -13,8 +13,12 @@ Checks:
   4. README.md links every skill, and only real ones.
   5. plugin.json and marketplace.json agree on name and version.
   6. Every skill has at least three eval cases under evals/<name>/.
+  7. Every skill holds an exact copy of each shared file from references/ in
+     skills/<name>/references/shared/, so a skill installed on its own (for
+     example with `npx skills add`) still has its shared rules.
 
-Usage: python3 scripts/check_skills.py [--self-test]
+Usage: python3 scripts/check_skills.py [--self-test | --sync-shared]
+  --sync-shared rewrites every skill's references/shared/ from references/, then checks.
 Requires PyYAML (pip install pyyaml).
 """
 
@@ -36,7 +40,12 @@ ROOT = Path(__file__).resolve().parents[1]
 FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 KNOWN_KEYS = {  # the Agent Skills spec set, enforced by skills-ref
-    "name", "description", "license", "compatibility", "metadata", "allowed-tools",
+    "name",
+    "description",
+    "license",
+    "compatibility",
+    "metadata",
+    "allowed-tools",
 }
 LINK_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 FENCE_RE = re.compile(r"^(\s*)(`{3,}|~{3,})")
@@ -166,6 +175,13 @@ def check_links(md: Path, problems: list[str]) -> None:
             dest = md if not path_part else (md.parent / path_part).resolve()
             if not dest.exists():
                 problems.append(f"{rel}:{lineno}: broken link '{target}'")
+            elif rel.parts[0] == "skills" and not dest.is_relative_to(
+                ROOT / "skills" / rel.parts[1]
+            ):
+                problems.append(
+                    f"{rel}:{lineno}: link '{target}' leaves the skill folder; "
+                    "a skill installed on its own would lose it"
+                )
             elif (
                 anchor
                 and dest.is_file()
@@ -177,8 +193,47 @@ def check_links(md: Path, problems: list[str]) -> None:
                 )
 
 
-def main() -> int:
+def check_shared(skills: list[str], problems: list[str], sync: bool) -> None:
+    """Check, or rewrite, each skill's copy of the shared references.
+
+    Args:
+        skills: Skill directory names under skills/.
+        problems: List that receives one message per missing, stale, or extra copy.
+        sync: When True, overwrite the copies from references/ and remove extras first.
+    """
+    sources = {
+        p.name: p.read_bytes() for p in sorted((ROOT / "references").glob("*.md"))
+    }
+    for name in skills:
+        shared = ROOT / "skills" / name / "references" / "shared"
+        if sync:
+            shared.mkdir(parents=True, exist_ok=True)
+            for extra in shared.glob("*"):
+                if extra.name not in sources:
+                    extra.unlink()
+            for fname, data in sources.items():
+                (shared / fname).write_bytes(data)
+        for fname, data in sources.items():
+            copy = shared / fname
+            if not copy.is_file() or copy.read_bytes() != data:
+                problems.append(
+                    f"skills/{name}/references/shared/{fname}: missing or out of date "
+                    "(run scripts/check_skills.py --sync-shared)"
+                )
+        for extra in (
+            sorted(p.name for p in shared.glob("*")) if shared.is_dir() else []
+        ):
+            if extra not in sources:
+                problems.append(
+                    f"skills/{name}/references/shared/{extra}: not in references/"
+                )
+
+
+def main(sync: bool = False) -> int:
     """Run every package check and print the problems found.
+
+    Args:
+        sync: When True, rewrite each skill's shared references before checking.
 
     Returns:
         The process exit code: 0 when clean, 1 when any problem is found.
@@ -187,6 +242,7 @@ def main() -> int:
     skills = sorted(p.parent.name for p in (ROOT / "skills").glob("*/SKILL.md"))
     if not skills:
         problems.append("no skills found under skills/")
+    check_shared(skills, problems, sync)
 
     for name in skills:
         check_frontmatter(ROOT / "skills" / name / "SKILL.md", problems)
@@ -260,4 +316,4 @@ if __name__ == "__main__":
     if "--self-test" in sys.argv:
         self_test()
         sys.exit(0)
-    sys.exit(main())
+    sys.exit(main(sync="--sync-shared" in sys.argv))

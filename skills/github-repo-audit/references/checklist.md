@@ -37,7 +37,7 @@ Severity levels:
 | B3 | Install or setup steps exist, and their commands match the manifests and scripts | Critical | Compare the README commands with `package.json`, `pyproject.toml`, `Cargo.toml`, `Makefile`, and similar files | `github-readme-writer` |
 | B4 | At least one runnable usage example | Important | Code block after the install steps | `github-readme-writer` |
 | B5 | Relative links and images resolve | Important | Glob each relative path | `github-readme-writer` |
-| B6 | Badges, if any, are backed by real services and number six or fewer per row | Nice | Compare with [badges.md](../../../references/badges.md) | `github-readme-writer` |
+| B6 | Badges, if any, are backed by real services and number six or fewer per row | Nice | Compare with [badges.md](shared/badges.md) | `github-readme-writer` |
 | B7 | The license statement matches the LICENSE file | Nice | README text against `repo.licenseInfo` | `github-readme-writer` |
 | B8 | Size and scope: well under 500 KiB, and long reference material is moved to `docs/` or a docs site | Nice | File size, heading count | `github-readme-writer` |
 

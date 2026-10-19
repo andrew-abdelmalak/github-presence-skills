@@ -23,7 +23,7 @@ Each control states what it stops, how to check it, how to apply it, and its lim
 | Dependabot alerts and updates | Free | Free |
 | Private vulnerability reporting | Free | Not offered |
 
-Source: GitHub Docs feature-availability notes (see [github-facts.md](../../../references/github-facts.md#security-reporting)). When an API call returns a plan or availability error, report it and the plan that unlocks the control. Do not retry.
+Source: GitHub Docs feature-availability notes (see [github-facts.md](shared/github-facts.md#security-reporting)). When an API call returns a plan or availability error, report it and the plan that unlocks the control. Do not retry.
 
 ## Default-branch ruleset
 
@@ -101,7 +101,7 @@ Configuration choices:
 
 ## Private vulnerability reporting
 
-**Check and apply:** see [github-facts.md](../../../references/github-facts.md#security-reporting). `gh api -X PUT repos/OWNER/REPO/private-vulnerability-reporting` enables it. SECURITY.md should link to `https://github.com/OWNER/REPO/security/advisories/new` (see `github-community-files`).
+**Check and apply:** see [github-facts.md](shared/github-facts.md#security-reporting). `gh api -X PUT repos/OWNER/REPO/private-vulnerability-reporting` enables it. SECURITY.md should link to `https://github.com/OWNER/REPO/security/advisories/new` (see `github-community-files`).
 
 ## CodeQL code scanning
 

@@ -4,7 +4,7 @@ The social preview is the image shown when someone shares the repository link in
 
 ## Specs
 
-From [github-facts.md](../../../references/github-facts.md#repository-metadata):
+From [github-facts.md](shared/github-facts.md#repository-metadata):
 - **Size:** 1280×640 px recommended, 640×320 px minimum.
 - **Format:** PNG, JPG, or GIF, under 1 MB.
 - **Transparency:** PNG transparency is supported, but transparent areas look different on light and dark backgrounds. Prefer a solid background.
@@ -36,14 +36,14 @@ Export to PNG with whichever tool is installed. Check with `command -v` first; d
 
 ```bash
 # Inkscape
-inkscape .github/social-preview.svg --export-type=png --export-filename=social-preview.png -w 1280 -h 640
+inkscape .github/social-preview.svg --export-type=png --export-filename=preview-1280x640.png -w 1280 -h 640
 
 # librsvg
-rsvg-convert -w 1280 -h 640 .github/social-preview.svg -o social-preview.png
+rsvg-convert -w 1280 -h 640 .github/social-preview.svg -o preview-1280x640.png
 
 # Chrome or Chromium (headless)
 google-chrome --headless --disable-gpu --hide-scrollbars --window-size=1280,640 \
-  --screenshot=social-preview.png "file://$PWD/.github/social-preview.svg"
+  --screenshot=preview-1280x640.png "file://$(realpath .github/social-preview.svg)"
 ```
 
 **Alternative without design tools:** [Socialify](https://github.com/wei/socialify) is an open-source service that generates a preview image from the repository's name, description, language, and stats. The user picks a theme on its site and downloads the PNG. It suits users who want a consistent card and no custom artwork.

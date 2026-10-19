@@ -16,7 +16,7 @@ What each section is for, in the default order. Include a section only when the 
 |---|---|---|---|
 | 1 | **Title (H1)** | Name the project | Use the project name exactly as users type or import it. A logo is fine above or beside it, if it stays small. |
 | 2 | **One-line description** | Say what it is and what it does, in one sentence | 10 to 25 words. It should match the repository's About description (see `github-discoverability`). Lead with the noun: "A CLI that...", "A Python library for...". |
-| 3 | **Badges** | Status at a glance | One row, six at most, all real. Follow [badges.md](../../../references/badges.md). |
+| 3 | **Badges** | Status at a glance | One row, six at most, all real. Follow [badges.md](shared/badges.md). |
 | 4 | **Visual** (optional) | Show, don't tell | A screenshot, terminal recording, or diagram, for projects with a UI, CLI output, or architecture worth seeing. Needs alt text. |
 | 5 | **Introduction** | The problem, who it is for, and what makes it different | 2 to 4 sentences. Name the alternative and the difference ("Unlike `grep`, it understands timestamps"). No history of the project. |
 | 6 | **Features** (optional) | Scannable capabilities | 3 to 7 bullets, each a concrete capability. Use a comparison table only when comparing with named alternatives, and only with verifiable claims. |
@@ -68,7 +68,7 @@ A two-row table is a sentence. A table with one meaningful column is a list.
 
 ## Length
 
-- Keep a README to what a newcomer needs to evaluate, install, and start. GitHub truncates content beyond 500 KiB (see [github-facts.md](../../../references/github-facts.md#readme-rendering)), but a README stops being readable long before that.
+- Keep a README to what a newcomer needs to evaluate, install, and start. GitHub truncates content beyond 500 KiB (see [github-facts.md](shared/github-facts.md#readme-rendering)), but a README stops being readable long before that.
 - As a heuristic, consider a docs site once the README passes about 400 lines, or holds full API or configuration references.
 
 ## When to move docs to a site
@@ -94,7 +94,7 @@ When a site is warranted, recommend a generator that matches the project's ecosy
 
 Publishing guidance to include with the recommendation:
 
-- Deploy with a GitHub Actions workflow that uses `actions/upload-pages-artifact` and `actions/deploy-pages`. A custom Actions workflow is also exempt from the soft limit of 10 builds per hour (see [github-facts.md](../../../references/github-facts.md#github-pages)).
+- Deploy with a GitHub Actions workflow that uses `actions/upload-pages-artifact` and `actions/deploy-pages`. A custom Actions workflow is also exempt from the soft limit of 10 builds per hour (see [github-facts.md](shared/github-facts.md#github-pages)).
 - After the first deploy, set the repository's website field to the site URL. `github-discoverability` does this.
 - If the site uses a custom domain, verify the domain in the account settings so nobody can take it over if the site is later removed.
 - Pages is for project documentation and personal sites, not for running a commercial service.

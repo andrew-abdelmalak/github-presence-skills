@@ -21,7 +21,7 @@ Write the files that tell people how to use, contribute to, report problems in, 
 
 ## Output
 
-- Each file written to the location in [github-facts.md](../../references/github-facts.md#community-health-files): `.github/` by default for this skill, except LICENSE and CITATION.cff, which go at the root.
+- Each file written to the location in [github-facts.md](references/shared/github-facts.md#community-health-files): `.github/` by default for this skill, except LICENSE and CITATION.cff, which go at the root.
 - A summary table with file, location, and source of the key facts.
 - Placeholders, and any settings changes (enable private vulnerability reporting, create missing labels) as commands awaiting approval.
 
@@ -82,7 +82,7 @@ gh label create "good first issue" --color 7057ff --description "Good for newcom
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
 - **Legal and policy texts are fetched, not written.** LICENSE comes from GitHub's license API. The code of conduct comes from the Contributor Covenant source. Never paraphrase or "improve" either. Say plainly that license guidance is not legal advice.
 - **No invented commitments.** Response times, supported versions, bounty programs, and safe-harbor language appear only if the user provides or approves them.

@@ -55,7 +55,7 @@ Avoid:
 - **Meaningless topics:** `project`, `code`, `github`, `open-source` (on its own), `2026`.
 - **Event topics** (`hacktoberfest`) unless participating, and `awesome` unless the repository is an awesome list.
 
-Topic format: lowercase letters, numbers, and hyphens, 50 characters or less, at most 20 (see [github-facts.md](../../../references/github-facts.md#repository-metadata)).
+Topic format: lowercase letters, numbers, and hyphens, 50 characters or less, at most 20 (see [github-facts.md](shared/github-facts.md#repository-metadata)).
 
 ## Beyond GitHub
 
@@ -80,7 +80,7 @@ A good repository name is lowercase, hyphen-separated, pronounceable, and matche
 - Version or status words (`-v2`, `-final`, `-new`, `-test`).
 - Names that imply an affiliation the project lacks, such as using a company's trademark as the first word.
 
-Renaming has costs (see [github-facts.md](../../../references/github-facts.md#repository-metadata)): GitHub Pages project URLs change, and other repositories' `uses:` references to actions in this repository break. Recommend a rename only for young or misleadingly named projects, and list these costs with the recommendation. Renaming is a remote change that needs approval:
+Renaming has costs (see [github-facts.md](shared/github-facts.md#repository-metadata)): GitHub Pages project URLs change, and other repositories' `uses:` references to actions in this repository break. Recommend a rename only for young or misleadingly named projects, and list these costs with the recommendation. Renaming is a remote change that needs approval:
 
 ```bash
 gh repo rename NEW-NAME --repo OWNER/OLD-NAME

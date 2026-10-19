@@ -7,7 +7,7 @@
 - [Stats cards](#stats-cards)
 - [What to refuse](#what-to-refuse)
 
-The counting rules are in [github-facts.md](../../../references/github-facts.md#contribution-graph). In short, a commit counts only when its author email is linked to the account and it lands on the default or `gh-pages` branch of a repository that is not a fork.
+The counting rules are in [github-facts.md](shared/github-facts.md#contribution-graph). In short, a commit counts only when its author email is linked to the account and it lands on the default or `gh-pages` branch of a repository that is not a fork.
 
 ## Diagnose missing contributions
 
@@ -72,7 +72,7 @@ Rules when adding one:
 - **Prefer Actions-generated images committed to the profile repository.** They never show a broken image when a third-party service is down.
 - **Tokens go in Actions secrets.** A personal access token used for private stats belongs in a repository secret, never in the README or a workflow file. Use the smallest scope the tool documents.
 - **At most one card,** placed after the projects section, never above it.
-- **Freshness:** a scheduled workflow that regenerates the card stops after 60 days with no activity in the repository (see [github-facts.md](../../../references/github-facts.md#github-actions)). The card then silently shows old numbers. Tell the user, and suggest re-enabling the workflow from the Actions tab when that happens.
+- **Freshness:** a scheduled workflow that regenerates the card stops after 60 days with no activity in the repository (see [github-facts.md](shared/github-facts.md#github-actions)). The card then silently shows old numbers. Tell the user, and suggest re-enabling the workflow from the Actions tab when that happens.
 
 ## What to refuse
 

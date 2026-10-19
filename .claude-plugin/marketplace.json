@@ -12,7 +12,7 @@
       "name": "github-presence-skills",
       "source": "./",
       "description": "Claude Code skills for a stronger GitHub presence: repository audit, README writer, community health files, discoverability, release notes, repository hardening, profile optimizer, repository families, and upstream contributions.",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "author": {
         "name": "Andrew Abdelmalak",
         "url": "https://github.com/andrew-abdelmalak"

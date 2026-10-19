@@ -63,7 +63,7 @@ gh api -X GET search/repositories -f q="topic:CANDIDATE" --jq .total_count
 
 **5. Website and name.**
 - **Website:** set it to the docs site, the package registry page, or a live demo, in that order. Never the repository's own URL. If a GitHub Pages site exists or `github-readme-writer` recommended one, use its URL once it is deployed.
-- **Name:** suggest a rename only when the name is misleading or unsearchable, and the project is young. Always list the side effects in [github-facts.md](../../references/github-facts.md#repository-metadata): Pages project URLs change, and `uses:` references to actions break.
+- **Name:** suggest a rename only when the name is misleading or unsearchable, and the project is young. Always list the side effects in [github-facts.md](references/shared/github-facts.md#repository-metadata): Pages project URLs change, and `uses:` references to actions break.
 
 **6. Social preview.** Write the brief from [references/social-preview.md](references/social-preview.md). If the user wants a starter image, fill [templates/social-preview.svg](templates/social-preview.svg) with the real name, description, and colors. Write it to `.github/social-preview.svg`, and give the export command. Upload happens in the Settings UI, so say so.
 
@@ -77,7 +77,7 @@ Run it only after an explicit yes. Then confirm by re-running the `gh repo view`
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
 - **Topic format is strict:** at most 20 topics, each 50 characters or less, lowercase letters, numbers, and hyphens only. Validate before proposing.
 - **No keyword stuffing.** The description is one sentence for humans. Topics describe the project; they are not a list of every technology it touches.

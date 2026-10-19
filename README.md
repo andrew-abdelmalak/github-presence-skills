@@ -48,11 +48,11 @@ git clone https://github.com/andrew-abdelmalak/github-presence-skills.git
 cd github-presence-skills
 ```
 
-To use the skills in every project without the plugin system, symlink them into your personal skills folder. Do not copy them: the skills reference shared files in `references/`, and only a symlink keeps those paths working.
+To use the skills in every project without the plugin system, symlink or copy them into your personal skills folder. Each skill folder is self-contained: it carries its own copy of the shared rules in `references/shared/`.
 
 ```bash
 mkdir -p ~/.claude/skills
-for d in "$PWD"/skills/*/; do ln -s "${d%/}" ~/.claude/skills/; done
+for d in skills/*/; do ln -s "$(realpath "$d")" ~/.claude/skills/; done
 ```
 
 ## Quick start
@@ -145,9 +145,10 @@ github-presence-skills/
 ├── skills/<name>/
 │   ├── SKILL.md             frontmatter plus instructions (under 500 lines)
 │   ├── references/          rules and complete examples, loaded on demand
+│   │   └── shared/          generated copy of the shared rules (do not edit)
 │   ├── templates/           files the skill fills in for your repository
 │   └── scripts/             helper scripts (audit, README linter, hardening)
-├── references/              shared rules and facts
+├── references/              shared rules and facts (the source for every skill's shared/)
 ├── evals/<name>/<case>/     claude plugin eval cases, three or more per skill
 ├── scripts/check_skills.py  structural checks run in CI
 ├── ci/                     CI-only tool versions, locked by hash

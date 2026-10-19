@@ -56,7 +56,7 @@
 - Owners must have write access, or reviews are not requested.
 - Team owners use `@org/team`.
 
-**FUNDING.yml** ([template](../templates/FUNDING.yml)): only the keys listed in [github-facts.md](../../../references/github-facts.md#community-health-files), with real handles from the user.
+**FUNDING.yml** ([template](../templates/FUNDING.yml)): only the keys listed in [github-facts.md](shared/github-facts.md#community-health-files), with real handles from the user.
 
 **CITATION.cff** ([template](../templates/CITATION.cff))
 - Use `cff-version: 1.2.0`.
@@ -127,7 +127,7 @@ Do not add commit-lint tooling from this skill. That decision belongs to `github
 
 ## Account-wide defaults
 
-Write files into the **public** `.github` repository of the user or organization (see [github-facts.md](../../../references/github-facts.md#community-health-files)).
+Write files into the **public** `.github` repository of the user or organization (see [github-facts.md](shared/github-facts.md#community-health-files)).
 
 1. Check that it exists: `gh repo view OWNER/.github`. If it does not, creating it is a remote change and needs approval: `gh repo create OWNER/.github --public --description "Default community health files"`.
 2. Write CONTRIBUTING.md, SECURITY.md, CODE_OF_CONDUCT.md, SUPPORT.md, FUNDING.yml, and `ISSUE_TEMPLATE/`. Keep the text generic across repositories. Commands that differ by repository belong in each repository's own CONTRIBUTING.md.

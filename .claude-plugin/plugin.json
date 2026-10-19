@@ -1,7 +1,7 @@
 {
   "name": "github-presence-skills",
   "displayName": "GitHub presence skills",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Claude Code skills for a stronger GitHub presence: repository audit, README writer, community health files, discoverability, release notes, repository hardening, profile optimizer, repository families, and upstream contributions.",
   "author": {
     "name": "Andrew Abdelmalak",
@@ -21,5 +21,9 @@
     "github-profile",
     "claude-code",
     "skills"
-  ]
+  ],
+  "supportUrl": "https://github.com/andrew-abdelmalak/github-presence-skills/discussions/categories/q-a",
+  "documentationUrl": "https://github.com/andrew-abdelmalak/github-presence-skills#readme",
+  "privacyPolicyUrl": "https://github.com/andrew-abdelmalak/github-presence-skills#what-the-skills-run-and-send",
+  "termsOfServiceUrl": "https://github.com/andrew-abdelmalak/github-presence-skills/blob/main/LICENSE"
 }

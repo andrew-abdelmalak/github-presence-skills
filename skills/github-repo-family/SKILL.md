@@ -60,7 +60,7 @@ Or list without `--topic` and filter by name prefix. Show the selected list and 
 | Names | One pattern, such as `CORE` plus `CORE-PLUGIN` (`tinyqueue`, `tinyqueue-redis`). Rename only with the user's agreement and the rename warnings. | `github-discoverability` |
 | Descriptions | A shared shape: `[What this one is] for/in [family]`. Each description still stands alone. | `github-discoverability` |
 | Topics | Every member gets one shared family topic, plus its own topics. Check that the family topic is not already used by unrelated repositories: `gh api -X GET search/repositories -f q="topic:NAME" --jq .total_count`. | `github-discoverability` |
-| Badge row | Same order and style in every README | [badges.md](../../references/badges.md) |
+| Badge row | Same order and style in every README | [badges.md](references/shared/badges.md) |
 | Related projects | The same block in every README, between markers, with the current repository marked | [templates/related-projects.md](templates/related-projects.md) |
 | Community files | Shared files in `OWNER/.github` (account-wide defaults). Per-repository files only where commands differ. | `github-community-files` |
 | License | Usually the same across the family. Flag differences; do not change a license without the user deciding. | `github-community-files` |
@@ -90,7 +90,7 @@ Or list without `--topic` and filter by name prefix. Show the selected list and 
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
 - **Confirm the family list** before any change. A wrong selector multiplies every mistake.
 - **Edit only inside the markers** in READMEs. Content outside them belongs to each repository.
