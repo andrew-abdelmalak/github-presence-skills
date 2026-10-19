@@ -1,0 +1,5 @@
+# Build backend for skills-ref, which installs from source. Installed first, so that
+# requirements.txt can build skills-ref with --no-build-isolation and every package stays hash-locked.
+# Regenerate with:
+#   uv pip compile ci/build-requirements.in --generate-hashes --python-version 3.13 -o ci/build-requirements.txt
+hatchling
