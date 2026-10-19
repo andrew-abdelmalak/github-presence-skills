@@ -36,3 +36,11 @@ graders:
   - name: how-to-check-list
     type: regex
     pattern: '[Hh]ow to check'
+  - name: unknowns-actionable
+    type: llm
+    criteria: |
+      PASS if the response gives a concrete way to check each of these three: branch protection or
+      rulesets, security features (secret scanning or Dependabot alerts), and the social preview.
+      A concrete way is an exact gh command or API call, or a GitHub settings path such as
+      "Settings → General → Social preview". FAIL if any of the three has no command or path,
+      or if the response only says that they need gh or the GitHub UI.
