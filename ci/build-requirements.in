@@ -1,5 +1,6 @@
-# Build backend for skills-ref, which installs from source. Installed first, so that
-# requirements.txt can build skills-ref with --no-build-isolation and every package stays hash-locked.
+# Build backends for packages that install from source on Python 3.13: hatchling (skills-ref) and poetry-core (reuse). Installed first, so that
+# requirements.txt can build them with --no-build-isolation and every package stays hash-locked.
 # Regenerate with:
 #   uv pip compile ci/build-requirements.in --generate-hashes --python-version 3.13 -o ci/build-requirements.txt
 hatchling
+poetry-core>=1.1.0

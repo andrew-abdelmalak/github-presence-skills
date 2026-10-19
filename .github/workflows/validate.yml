@@ -20,8 +20,8 @@ jobs:
 
       - name: Install Python tools
         # Every package, including skills-ref from its official source at a pinned commit,
-        # is locked by hash. skills-ref builds from source, so its build backend is installed
-        # first from its own lock, and the build runs without an isolated (unpinned) environment.
+        # is locked by hash. skills-ref and reuse build from source on Python 3.13, so their build backends are installed
+        # first from their own lock, and the builds run without an isolated (unpinned) environment.
         run: |
           python -m pip install --quiet --require-hashes -r ci/build-requirements.txt
           python -m pip install --quiet --require-hashes --no-build-isolation -r ci/requirements.txt
