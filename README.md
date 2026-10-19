@@ -52,7 +52,7 @@ To use the skills in every project without the plugin system, symlink or copy th
 
 ```bash
 mkdir -p ~/.claude/skills
-for d in "$PWD"/skills/*/; do ln -s "${d%/}" ~/.claude/skills/; done
+for d in skills/*/; do ln -s "$(realpath "$d")" ~/.claude/skills/; done
 ```
 
 ## Quick start

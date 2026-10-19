@@ -63,9 +63,9 @@ The description matches the README's first line (written by `github-readme-write
 
 I wrote a filled-in starter to `.github/social-preview.svg`. To export it as a PNG, use the first available tool:
 ```bash
-rsvg-convert -w 1280 -h 640 .github/social-preview.svg -o social-preview.png
+rsvg-convert -w 1280 -h 640 .github/social-preview.svg -o preview-1280x640.png
 ```
-Upload `social-preview.png` yourself in **Settings → General → Social preview → Edit**. GitHub has no API for this step.
+Upload `preview-1280x640.png` yourself in **Settings → General → Social preview → Edit**. GitHub has no API for this step.
 
 **Command awaiting approval**
 ```bash
