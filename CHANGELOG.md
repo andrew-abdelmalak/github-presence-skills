@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- README section "What the skills run and send", listing every command and outside service the skills use.
+- OpenSSF Scorecard badge in the README.
+
+### Changed
+
+- CI installs its Python and npm tools from hash-locked files in `ci/`.
+
 ## [0.2.0] - 2026-10-18
 
 ### Added

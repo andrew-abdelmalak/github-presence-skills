@@ -7,6 +7,7 @@
 Claude Code skills that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
 
 [![validate](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/andrew-abdelmalak/github-presence-skills/badge)](https://scorecard.dev/viewer/?uri=github.com/andrew-abdelmalak/github-presence-skills)
 [![License: MIT](https://img.shields.io/github/license/andrew-abdelmalak/github-presence-skills)](LICENSE)
 ![Claude Code skills](https://img.shields.io/badge/Claude_Code-skills-D97757)
 
@@ -117,6 +118,22 @@ Shared references used by every skill:
 | [references/writing-style.md](references/writing-style.md) | The writing style for everything the skills produce |
 | [references/badges.md](references/badges.md) | Which badges to use, and how |
 
+## What the skills run and send
+
+Everything runs on your machine with your own credentials. The skills never ask for a token and never read one from your environment.
+
+| What | When | Where it connects |
+|---|---|---|
+| Reading and writing files in your repository | Every skill. Files are written only after you see what changes. | Nowhere |
+| `git` commands (`git log`, `git ls-files`, `git remote`, and `git push` after approval) | Most skills | Your Git remote, through your own Git setup |
+| `gh` commands: reads such as `gh repo view` and `gh api` GET requests, and changes such as `gh repo edit`, `gh pr create`, or `gh release create` after approval | Most skills | GitHub, as your signed-in `gh` account |
+| GitHub connector tools, when `gh` is unavailable | Most skills | GitHub, through the connector you set up |
+| `collect_repo_facts.sh` and `collect_posture.sh` | `github-repo-audit`, `github-repo-hardening` | GitHub through `gh`. `collect_posture.sh` also reads the public OpenSSF Scorecard result from `https://api.scorecard.dev`, sending only the repository's name. |
+| Package registry lookups (`npm view`, `pip index versions`, `cargo search`, `gem search`, `go list -m`) | `github-readme-writer`, to confirm a package is published before writing its install command | The public registry for that ecosystem |
+| `lint_readme.py` | `github-readme-writer` | Nowhere: it reads local files only |
+
+Nothing else is sent anywhere. The package has no telemetry, hooks, MCP servers, or background processes. `scripts/check_skills.py` and the files in `ci/` are for this repository's own CI and do not run when you use the skills.
+
 ## Package layout
 
 ```text
@@ -133,6 +150,7 @@ github-presence-skills/
 ├── references/              shared rules and facts
 ├── evals/<name>/<case>/     claude plugin eval cases, three or more per skill
 ├── scripts/check_skills.py  structural checks run in CI
+├── ci/                     CI-only tool versions, locked by hash
 ├── assets/                  icon and social preview
 └── .github/                 CI, issue forms, PR template, release notes config
 ```
