@@ -1,0 +1,8 @@
+{
+  "name": "github-presence-skills-ci",
+  "private": true,
+  "description": "CI-only tools. Install with: npm ci --prefix ci",
+  "dependencies": {
+    "@anthropic-ai/claude-code": "2.1.296"
+  }
+}

@@ -1,0 +1,6 @@
+# CI-only Python tools. Regenerate requirements.txt with:
+#   uv pip compile ci/requirements.in --generate-hashes --python-version 3.13 -o ci/requirements.txt
+pyyaml==6.0.3
+reuse==6.2.0
+# skills-ref from its official source at a pinned commit: the PyPI release (0.1.1) does not install the command.
+skills-ref @ https://github.com/agentskills/agentskills/archive/f130f348f502d9804278a617f86929846896d2e9.tar.gz#subdirectory=skills-ref
