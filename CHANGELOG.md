@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Every skill is self-contained: it carries a generated copy of the shared rules in `references/shared/`, so installs that copy single skills, such as `npx skills add`, keep the approval and writing rules. CI fails if a copy drifts or a link leaves its skill folder.
 - CI installs its Python and npm tools from hash-locked files in `ci/`.
 
 ## [0.2.0] - 2026-10-18

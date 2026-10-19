@@ -72,7 +72,7 @@ For an organization, replace `user(login:)` with `organization(login:)`. Organiz
 
 **5. Choose the pinned six** with [references/pinned-repos.md](references/pinned-repos.md). Pick from `pinnableItems` only. For each pick that fails basic readiness (no description, no README, no license), list the fix and the sibling skill that makes it.
 
-**6. Draft the profile README.** First pick one style with the user, from [the style guide](references/profile-checklist.md#profile-readme-styles). Mixing styles produces clutter. Then draft from the template. Every project line links to a real repository and states what it does. Numbers (users, stars, downloads) appear only if verified. Keep the README short enough to read in about 30 seconds. If the user has portfolio or blog content worth a site, suggest a personal GitHub Pages site at `NAME.github.io` (one per account; see [github-facts.md](../../references/github-facts.md#github-pages)).
+**6. Draft the profile README.** First pick one style with the user, from [the style guide](references/profile-checklist.md#profile-readme-styles). Mixing styles produces clutter. Then draft from the template. Every project line links to a real repository and states what it does. Numbers (users, stars, downloads) appear only if verified. Keep the README short enough to read in about 30 seconds. If the user has portfolio or blog content worth a site, suggest a personal GitHub Pages site at `NAME.github.io` (one per account; see [github-facts.md](references/shared/github-facts.md#github-pages)).
 
 **7. Diagnose the contribution graph** if the user mentions missing contributions, or if their local history clearly outpaces the graph. Follow [references/contributions.md](references/contributions.md). Handle stats-card requests with the policy in the same file.
 
@@ -83,9 +83,9 @@ For an organization, replace `user(login:)` with `organization(login:)`. Organiz
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
-- **Refuse fake activity:** backdated commits, commit or streak bots, star or follow exchanges. Explain the policy in one or two sentences ([github-facts.md](../../references/github-facts.md#platform-policy)), then offer the honest fixes in [contributions.md](references/contributions.md).
+- **Refuse fake activity:** backdated commits, commit or streak bots, star or follow exchanges. Explain the policy in one or two sentences ([github-facts.md](references/shared/github-facts.md#platform-policy)), then offer the honest fixes in [contributions.md](references/contributions.md).
 - **No invented claims:** employers, titles, years of experience, user counts, and "expert in" lists come only from the user or verifiable sources.
 - **Personal data is the user's choice.** Location, email, pronouns, and hireable status are suggested, never set by default. Never guess pronouns.
 - **No third-party widgets by default.** Stats cards, visitor counters, and trophies are optional, and only the honest variants in [contributions.md](references/contributions.md#stats-cards) are offered.

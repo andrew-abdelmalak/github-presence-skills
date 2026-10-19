@@ -7,7 +7,7 @@ This file lives in `.claude/` rather than at the repository root on purpose: the
 ## Layout
 
 - Skills live in `skills/<name>/`. `.claude/skills/<name>` is a relative symlink to `../../skills/<name>`. Adding or renaming a skill means adding or renaming its symlink. A missing symlink fails silently for anyone using a clone.
-- Shared rules live in `references/`. Skills cite them as `../../references/<file>.md` from `SKILL.md`, and as `../../../references/<file>.md` from a skill's own `references/` files.
+- Shared rules live in `references/`, the only place to edit them. Each skill holds a generated copy in `skills/<name>/references/shared/`, so a skill installed on its own (for example with `npx skills add`) keeps its rules. Skills cite the copy as `references/shared/<file>.md` from `SKILL.md`, and as `shared/<file>.md` from a skill's own `references/` files. After editing `references/`, run `python3 scripts/check_skills.py --sync-shared`; CI fails if a copy drifts or a link leaves its skill folder.
 - `templates/` holds files that a skill fills in for the user's repository. Links inside templates point into that repository, so `check_skills.py` does not check them.
 
 ## Skill rules

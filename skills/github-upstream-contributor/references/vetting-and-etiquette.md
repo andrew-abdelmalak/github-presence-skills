@@ -66,4 +66,4 @@ I won't be able to finish this after all. Unassigning myself so someone else can
 - Push follow-up commits instead of force-pushing during review, unless the project asks for a rebased history.
 - Keep the PR scoped. New ideas become new issues.
 - If the maintainers decline the change, thank them and close the PR. A respectful exchange still counts for something.
-- After merge, the contribution appears on the user's graph (see [github-facts.md](../../../references/github-facts.md#contribution-graph)), and the repository becomes pinnable on their profile.
+- After merge, the contribution appears on the user's graph (see [github-facts.md](shared/github-facts.md#contribution-graph)), and the repository becomes pinnable on their profile.

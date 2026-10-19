@@ -12,7 +12,7 @@
 |---|---|---|---|
 | P1 | A profile README is shown | The public repository `NAME/NAME` exists with a non-empty `README.md`. Pre-July-2020 repositories need **Share to profile**. | Create it (see SKILL.md step 8) |
 | P2 | The README's first two lines say who you are and what you build | Read them | Rewrite from the template |
-| P3 | The README is scannable in about 30 seconds: short sections, no wall of badges | Rendered length, badge count | Trim. Follow [badges.md](../../../references/badges.md#placement). |
+| P3 | The README is scannable in about 30 seconds: short sections, no wall of badges | Rendered length, badge count | Trim. Follow [badges.md](shared/badges.md#placement). |
 | P4 | No broken images or dead third-party widgets | Each image URL loads. No public stats instances that often fail. | Remove, or switch to Actions-generated images ([contributions.md](contributions.md#stats-cards)) |
 | P5 | The bio states role and focus, specifically | `bio` field | Propose a new bio |
 | P6 | The display name is set | `name` field | Ask the user what name they want public |
@@ -44,13 +44,13 @@ Pick one primary style for the goal. All of them follow the same honesty rules.
 | **Project showcase** | A table of selected projects with outcomes | Low: update when projects change | Job seekers and freelancers whose work is public |
 | **Résumé** | Role, experience, talks, and writing | Low | Candidates with credentials that are not visible in code |
 | **Visual** | One banner, screenshot, or diagram, then prose | Low | Designers and front-end developers. Needs alt text and a small file. |
-| **Self-updating** | Recent posts, releases, or activity, injected by a scheduled Action | Ongoing | People who publish often. Scheduled workflows in public repositories stop after 60 days without repository activity, so the content can silently freeze (see [github-facts.md](../../../references/github-facts.md#github-actions)). |
+| **Self-updating** | Recent posts, releases, or activity, injected by a scheduled Action | Ongoing | People who publish often. Scheduled workflows in public repositories stop after 60 days without repository activity, so the content can silently freeze (see [github-facts.md](shared/github-facts.md#github-actions)). |
 
 Avoid walls of technology logo badges and multiple stats cards in any style. They crowd out the information a visitor came for.
 
 ## Organization profiles
 
-GitHub details are in [github-facts.md](../../../references/github-facts.md#profiles-and-organizations).
+GitHub details are in [github-facts.md](shared/github-facts.md#profiles-and-organizations).
 
 | ID | Check | How to verify |
 |---|---|---|

@@ -4,7 +4,7 @@ The social preview is the image shown when someone shares the repository link in
 
 ## Specs
 
-From [github-facts.md](../../../references/github-facts.md#repository-metadata):
+From [github-facts.md](shared/github-facts.md#repository-metadata):
 - **Size:** 1280×640 px recommended, 640×320 px minimum.
 - **Format:** PNG, JPG, or GIF, under 1 MB.
 - **Transparency:** PNG transparency is supported, but transparent areas look different on light and dark backgrounds. Prefer a solid background.

@@ -86,7 +86,7 @@ Recommend `--draft` first, so the user can review the release on GitHub and publ
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
 - **Never move, delete, or re-point an existing tag,** and never publish without explicit approval of the exact command.
 - **Breaking claims need evidence.** Do not call a release "non-breaking" or "fully backwards compatible" unless the evidence supports it. Say what was checked.

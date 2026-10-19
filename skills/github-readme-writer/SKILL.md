@@ -56,7 +56,7 @@ Run `git remote get-url origin` for the owner and name. Run `gh repo view --json
 
 **4. Plan the outline** from [references/section-guide.md](references/section-guide.md). In `improve` mode, compare the existing README section by section and mark each **keep**, **fix**, **add**, or **remove**. Accurate content in the author's voice stays.
 
-**5. Draft** from [templates/README.template.md](templates/README.template.md). Follow [writing-style.md](../../references/writing-style.md) and [badges.md](../../references/badges.md).
+**5. Draft** from [templates/README.template.md](templates/README.template.md). Follow [writing-style.md](references/shared/writing-style.md) and [badges.md](references/shared/badges.md).
 
 **6. Verify.** First run the bundled linter, which catches mechanical problems (headings, fences, alt text, unfilled tokens, missing files, hype words):
 
@@ -70,7 +70,7 @@ Fix every error, and fix or justify every warning. Then check the judgment items
 - Every badge maps to a real workflow, release, registry page, or license.
 - The quick start runs top to bottom with no step missing, including environment variables and required services.
 - If a heading was renamed, `grep -rn "#old-anchor"` finds no inbound links left broken.
-- The [writing-style self-check](../../references/writing-style.md#self-check) passes.
+- The [writing-style self-check](references/shared/writing-style.md#self-check) passes.
 
 **7. Decide on a docs site.** Apply the rule in [references/section-guide.md](references/section-guide.md#when-to-move-docs-to-a-site). If the content needs a site, keep the README short, link to `docs/`, and include the site recommendation in the response. Do not scaffold the site unless the user asks.
 
@@ -78,7 +78,7 @@ Fix every error, and fix or justify every warning. Then check the judgment items
 
 ## Hard rules
 
-Shared rules: [operating-rules.md](../../references/operating-rules.md). Additional rules for this skill:
+Shared rules: [operating-rules.md](references/shared/operating-rules.md). Additional rules for this skill:
 
 - **No invented commands, versions, or outputs.** If you cannot confirm a command, mark it `TODO`. Show sample output only if you ran the command or the repository documents that output.
 - **Keep what is true.** In `improve` mode, never drop accurate technical content just to fit the template. Move it, or recommend moving it to `docs/`.
