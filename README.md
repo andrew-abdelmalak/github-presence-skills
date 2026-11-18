@@ -4,7 +4,7 @@
 
 # github-presence-skills
 
-Claude Code skills that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
+Agent skills for Claude Code and Antigravity that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
 
 [![validate](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/andrew-abdelmalak/github-presence-skills/badge)](https://scorecard.dev/viewer/?uri=github.com/andrew-abdelmalak/github-presence-skills)
@@ -30,6 +30,16 @@ In Claude Code:
 ```
 
 Skills from a plugin are namespaced, so you can also call them directly, for example `/github-presence-skills:github-repo-audit`.
+
+### In Antigravity
+
+Install the plugin from GitHub with the Antigravity CLI:
+
+```bash
+agy plugin install https://github.com/andrew-abdelmalak/github-presence-skills
+```
+
+Its skills appear as slash commands in the interactive session, such as `/github-repo-audit`.
 
 ### Any agent that reads SKILL.md
 
@@ -139,6 +149,7 @@ Nothing else is sent anywhere. The package has no telemetry, hooks, MCP servers,
 ```text
 github-presence-skills/
 ├── .claude-plugin/          plugin.json and marketplace.json
+├── .antigravity-plugin/     plugin.json (Antigravity plugin manifest)
 ├── .claude/
 │   ├── CLAUDE.md            conventions for agents working on this repository
 │   └── skills/              symlinks to skills/ (so a clone works without the plugin)
@@ -162,6 +173,7 @@ github-presence-skills/
 python3 scripts/check_skills.py --self-test
 python3 scripts/check_skills.py
 claude plugin validate .claude-plugin/plugin.json --strict
+agy plugin validate .
 ```
 
 `check_skills.py` checks frontmatter, links and anchors, symlinks, the README skill table, manifest versions, and eval coverage. It exists because `claude plugin validate` does not check skill frontmatter. CI also runs the official `skills-ref` validator, `reuse lint`, and the package's own README linter on this README.

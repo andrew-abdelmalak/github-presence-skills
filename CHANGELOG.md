@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Antigravity plugin manifest (`.antigravity-plugin/plugin.json`), install steps, and a version check that keeps it in step with the Claude Code manifest.
+
+### Changed
+
+- Skill text no longer names Claude Code tools; script steps also give the path for agents without `CLAUDE_SKILL_DIR`.
+
 ## [0.2.2] - 2026-10-19
 
 ### Changed

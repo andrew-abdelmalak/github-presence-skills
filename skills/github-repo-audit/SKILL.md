@@ -52,9 +52,11 @@ Audit progress:
 bash "${CLAUDE_SKILL_DIR}/scripts/collect_repo_facts.sh" OWNER/REPO
 ```
 
+In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/collect_repo_facts.sh`.
+
 A `null` field means the call failed or needs more permission (branch rules, for example). Report it as **Unknown**, never as **Fix**. If the script exits with code 3, `gh` is unavailable. Continue with local files and, if they are available, the GitHub connector tools ([data sources](references/shared/operating-rules.md#data-sources)), and say which checks you could not run. If it exits with code 4, the repository was not found or is not visible to the signed-in account. Confirm the name with the user instead of reporting every check as Unknown.
 
-**3. Scan local files.** Use Glob and Read on the working tree. Look for the README in `.github/`, root, and `docs/`, community files in their supported locations, `.github/workflows/`, manifests, `.gitignore`, and large or generated files. Run `git ls-files | head -200` to see what is tracked. Read only the parts of large files you need.
+**3. Scan local files.** Search and read files in the working tree. Look for the README in `.github/`, root, and `docs/`, community files in their supported locations, `.github/workflows/`, manifests, `.gitignore`, and large or generated files. Run `git ls-files | head -200` to see what is tracked. Read only the parts of large files you need.
 
 **4. Score every check** in [references/checklist.md](references/checklist.md). For each check, record the verdict and one line of evidence: a path, a field value, or a command result. Mark a check **N/A** when it does not fit the project type. For example, `CITATION.cff` applies only to research software and datasets. Adjust severity to the stated goal as the checklist describes.
 

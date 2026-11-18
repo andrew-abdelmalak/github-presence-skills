@@ -64,9 +64,11 @@ Run `git remote get-url origin` for the owner and name. Run `gh repo view --json
 python3 "${CLAUDE_SKILL_DIR}/scripts/lint_readme.py" README.md --repo-root .
 ```
 
+In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/lint_readme.py`.
+
 Fix every error, and fix or justify every warning. Then check the judgment items, and repeat until every item passes:
 - Every shell command appears in a manifest, script, Makefile, or CI file, or is a standard command for that ecosystem.
-- Every relative link and image path exists (check with Glob).
+- Every relative link and image path exists (check on disk).
 - Every badge maps to a real workflow, release, registry page, or license.
 - The quick start runs top to bottom with no step missing, including environment variables and required services.
 - If a heading was renamed, `grep -rn "#old-anchor"` finds no inbound links left broken.

@@ -1,0 +1,32 @@
+{
+  "name": "github-presence-skills",
+  "displayName": "GitHub presence skills",
+  "version": "0.2.2",
+  "description": "Agent skills for a stronger GitHub presence: repository audit, README writer, community health files, discoverability, release notes, repository hardening, profile optimizer, repository families, and upstream contributions.",
+  "logo": "assets/icon.svg",
+  "suggestedPrompts": [
+    "Audit this repository before I make it public",
+    "Write a README for this project",
+    "Suggest topics and a description for this repo"
+  ],
+  "category": "Developer Tools",
+  "keywords": [
+    "github",
+    "readme",
+    "open-source",
+    "developer-experience",
+    "documentation",
+    "community-health",
+    "release-notes",
+    "github-profile",
+    "antigravity",
+    "skills"
+  ],
+  "author": {
+    "name": "Andrew Abdelmalak",
+    "url": "https://github.com/andrew-abdelmalak"
+  },
+  "homepage": "https://github.com/andrew-abdelmalak/github-presence-skills",
+  "repository": "https://github.com/andrew-abdelmalak/github-presence-skills",
+  "license": "MIT"
+}
