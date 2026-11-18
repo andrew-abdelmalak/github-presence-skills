@@ -52,7 +52,7 @@ Audit progress:
 bash "${CLAUDE_SKILL_DIR}/scripts/collect_repo_facts.sh" OWNER/REPO
 ```
 
-In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/collect_repo_facts.sh`.
+In agents without `CLAUDE_SKILL_DIR`, replace `${CLAUDE_SKILL_DIR}` with the full path to this skill's folder and keep the user's repository as the working directory.
 
 A `null` field means the call failed or needs more permission (branch rules, for example). Report it as **Unknown**, never as **Fix**. If the script exits with code 3, `gh` is unavailable. Continue with local files and, if they are available, the GitHub connector tools ([data sources](references/shared/operating-rules.md#data-sources)), and say which checks you could not run. If it exits with code 4, the repository was not found or is not visible to the signed-in account. Confirm the name with the user instead of reporting every check as Unknown.
 

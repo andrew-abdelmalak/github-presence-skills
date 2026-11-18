@@ -64,7 +64,7 @@ Run `git remote get-url origin` for the owner and name. Run `gh repo view --json
 python3 "${CLAUDE_SKILL_DIR}/scripts/lint_readme.py" README.md --repo-root .
 ```
 
-In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/lint_readme.py`.
+In agents without `CLAUDE_SKILL_DIR`, replace `${CLAUDE_SKILL_DIR}` with the full path to this skill's folder and keep the user's repository as the working directory.
 
 Fix every error, and fix or justify every warning. Then check the judgment items, and repeat until every item passes:
 - Every shell command appears in a manifest, script, Makefile, or CI file, or is a standard command for that ecosystem.

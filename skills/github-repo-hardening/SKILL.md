@@ -46,7 +46,7 @@ Hardening progress:
 bash "${CLAUDE_SKILL_DIR}/scripts/collect_posture.sh" OWNER/REPO
 ```
 
-In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/collect_posture.sh`.
+In agents without `CLAUDE_SKILL_DIR`, replace `${CLAUDE_SKILL_DIR}` with the full path to this skill's folder and keep the user's repository as the working directory.
 
 In a local clone, also read `.github/workflows/*.yml` and `.github/dependabot.yml` directly. The script only samples remote workflow files. Exit code 4 means the repository was not found or is not visible to the signed-in account: confirm the name with the user.
 
