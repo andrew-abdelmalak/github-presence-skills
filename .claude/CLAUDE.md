@@ -15,7 +15,7 @@ This file lives in `.claude/` rather than at the repository root on purpose: the
 - **Frontmatter:** `name` equals the directory name, using lowercase letters, digits, and single hyphens, and never contains "claude" or "anthropic". `description` is in the third person, says what the skill does and when to use it, ends with "Not for X (use Y)", stays under 1,024 characters (aim for about 500), and contains no em or en dashes and no XML tags.
 - **Body sections, in order:** When to use, Input, Output, Workflow (with a copyable checklist), Hard rules (starting with the shared-rules link), Example, Reference files, Related skills.
 - `SKILL.md` stays under 500 lines. Reference files longer than 100 lines start with a Contents list.
-- Bundled scripts are referenced as `${CLAUDE_SKILL_DIR}/scripts/...`, because the working directory is the user's project, not the skill.
+- Bundled scripts are referenced as `${CLAUDE_SKILL_DIR}/scripts/...`, because the working directory is the user's project, not the skill. Follow each such command with the sentence "In agents without `CLAUDE_SKILL_DIR`, run the same script from this skill's folder: `scripts/<file>`." so Antigravity and other agents can find it.
 - **Remote changes** (`gh repo edit`, `gh release create`, `gh pr create`, `gh api -X ...`, `git push`) are always shown as exact commands and run only after the user's explicit approval. See `references/operating-rules.md`.
 - **Platform numbers and rules** come from `references/github-facts.md`. When you add or re-check a fact, include the source and update the "Last verified" date.
 - **Examples** use fictional accounts (`acme-labs`, `dmitri-v`) and say so. Real lookups (such as topic counts) carry their date.
@@ -39,7 +39,7 @@ Renaming a skill breaks users' habits and their eval filters. If you must rename
 
 ## Versioning
 
-- `version` in `.claude-plugin/plugin.json` and in the `marketplace.json` entry must match. `check_skills.py` enforces this.
+- `version` in `.claude-plugin/plugin.json`, in the `marketplace.json` entry, and in `.antigravity-plugin/plugin.json` must match, and the two `plugin.json` files share one `name`. `check_skills.py` enforces this.
 - Follow SemVer. Removing or renaming a skill, or changing its approval behavior, is a breaking change.
 - Release with the package's own `github-release-writer` skill: update CHANGELOG.md, then `gh release create vX.Y.Z --draft`.
 
@@ -53,6 +53,7 @@ python3 skills/github-readme-writer/scripts/lint_readme.py README.md --repo-root
 for f in skills/*/scripts/*.sh; do bash -n "$f"; done
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate .claude-plugin/marketplace.json --strict
+agy plugin validate .   # if the Antigravity CLI is installed
 ```
 
 After a behavior change to a skill, also run its eval cases (`claude plugin eval . --case '<prefix>-*' --runs 1 --ablation none`). Evals cost model usage, so they are not part of CI.
