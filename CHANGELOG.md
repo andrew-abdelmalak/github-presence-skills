@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-18
+
 ### Added
 
 - Antigravity plugin manifest (`.antigravity-plugin/plugin.json`), install steps, and a version check that keeps it in step with the Claude Code manifest.
@@ -66,7 +68,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OpenSSF Scorecard workflow for this repository.
 - REUSE licensing: MIT for the package, CC0-1.0 for `skills/*/templates/`, CC-BY-SA-4.0 for `CODE_OF_CONDUCT.md`.
 
-[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/andrew-abdelmalak/github-presence-skills/compare/v0.1.0...v0.2.0

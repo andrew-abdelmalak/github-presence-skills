@@ -1,7 +1,7 @@
 {
   "name": "github-presence-skills",
   "displayName": "GitHub presence skills",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Agent skills for a stronger GitHub presence: repository audit, README writer, community health files, discoverability, release notes, repository hardening, profile optimizer, repository families, and upstream contributions.",
   "logo": "assets/icon.svg",
   "suggestedPrompts": [
