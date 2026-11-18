@@ -4,19 +4,19 @@
 
 # github-presence-skills
 
-Claude Code skills that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
+Agent skills for Claude Code and Antigravity that audit and improve how your GitHub repositories and profile present your work. Nine skills cover READMEs, community files, topics, releases, security settings, profiles, and contributions to other projects.
 
 [![validate](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml/badge.svg)](https://github.com/andrew-abdelmalak/github-presence-skills/actions/workflows/validate.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/andrew-abdelmalak/github-presence-skills/badge)](https://scorecard.dev/viewer/?uri=github.com/andrew-abdelmalak/github-presence-skills)
 [![License: MIT](https://img.shields.io/github/license/andrew-abdelmalak/github-presence-skills)](LICENSE)
 ![Claude Code skills](https://img.shields.io/badge/Claude_Code-skills-D97757)
 
-Ask Claude Code to "audit this repo" or "write a README", and the matching skill takes over. Each skill reads your repository and GitHub's own data before writing anything. It checks platform limits against a verified facts file instead of memory, and it shows you every remote change (topics, releases, pull requests) as an exact command that runs only after you say yes.
+Ask Claude Code or Antigravity to "audit this repo" or "write a README", and the matching skill takes over. Each skill reads your repository and GitHub's own data before writing anything. It checks platform limits against a verified facts file instead of memory, and it shows you every remote change (topics, releases, pull requests) as an exact command that runs only after you say yes.
 
 ## Install
 
 Requirements:
-- [Claude Code](https://code.claude.com/docs)
+- [Claude Code](https://code.claude.com/docs) or the [Antigravity CLI](https://antigravity.google/docs/plugins) (`agy`)
 - `git`
 - Recommended: the [GitHub CLI](https://cli.github.com/) (`gh`), signed in with `gh auth login`. Without it, the skills work from local files, the GitHub connector if your Claude Code session has it, and text you paste. The connector can read files, issues, and releases, but not repository settings.
 
@@ -31,9 +31,19 @@ In Claude Code:
 
 Skills from a plugin are namespaced, so you can also call them directly, for example `/github-presence-skills:github-repo-audit`.
 
+### In Antigravity
+
+Install the plugin from GitHub with the Antigravity CLI:
+
+```bash
+agy plugin install https://github.com/andrew-abdelmalak/github-presence-skills
+```
+
+Its skills appear as slash commands in the interactive session, such as `/github-repo-audit`.
+
 ### Any agent that reads SKILL.md
 
-The [skills CLI](https://github.com/vercel-labs/skills) installs the same skills into other agents. Claude Code remains the tested target.
+The [skills CLI](https://github.com/vercel-labs/skills) installs the same skills into other agents. Claude Code is the tested target; Antigravity loads the skills through its own manifest.
 
 ```bash
 npx skills add andrew-abdelmalak/github-presence-skills
@@ -139,6 +149,7 @@ Nothing else is sent anywhere. The package has no telemetry, hooks, MCP servers,
 ```text
 github-presence-skills/
 ├── .claude-plugin/          plugin.json and marketplace.json
+├── .antigravity-plugin/     plugin.json (Antigravity plugin manifest)
 ├── .claude/
 │   ├── CLAUDE.md            conventions for agents working on this repository
 │   └── skills/              symlinks to skills/ (so a clone works without the plugin)
@@ -162,6 +173,7 @@ github-presence-skills/
 python3 scripts/check_skills.py --self-test
 python3 scripts/check_skills.py
 claude plugin validate .claude-plugin/plugin.json --strict
+agy plugin validate .
 ```
 
 `check_skills.py` checks frontmatter, links and anchors, symlinks, the README skill table, manifest versions, and eval coverage. It exists because `claude plugin validate` does not check skill frontmatter. CI also runs the official `skills-ref` validator, `reuse lint`, and the package's own README linter on this README.

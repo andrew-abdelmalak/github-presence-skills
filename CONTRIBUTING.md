@@ -43,6 +43,7 @@ python3 skills/github-readme-writer/scripts/lint_readme.py README.md --repo-root
 for f in skills/*/scripts/*.sh; do bash -n "$f"; done
 claude plugin validate .claude-plugin/plugin.json --strict
 claude plugin validate .claude-plugin/marketplace.json --strict
+agy plugin validate .   # if the Antigravity CLI is installed
 ```
 
 CI runs these checks, plus the official `skills-ref` validator and `reuse lint`. Evals call the model, so they are not part of CI. Run the cases for the skill you changed before opening a pull request:

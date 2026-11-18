@@ -44,7 +44,7 @@ Use the first source that works. Each step down is a supported way to work, not 
 | Kind of change | Examples | Rule |
 |---|---|---|
 | Read-only | `git log`, `gh repo view`, `gh api` GET requests, reading files | Run freely |
-| Local file write | Creating or editing `README.md`, `CONTRIBUTING.md`, `.github/*` | Show what will be written. Before overwriting an existing file, summarize what changes and what is kept. Claude Code's own permission prompt then applies. |
+| Local file write | Creating or editing `README.md`, `CONTRIBUTING.md`, `.github/*` | Show what will be written. Before overwriting an existing file, summarize what changes and what is kept. The agent's own permission prompt then applies. |
 | Remote change | `gh repo edit`, `gh release create`, `gh pr create`, `gh issue comment`, `gh repo create`, `gh api` with `-X POST/PATCH/PUT/DELETE`, `git push` | Print the exact command or commands. Wait for an explicit yes in the conversation, then run exactly what was shown. Approval covers that command set only. |
 | Persistent local configuration | `git config --global`, editing shell profiles | Same as a remote change: show the command, wait for an explicit yes |
 | Never without a direct, specific request | Force push, deleting tags, releases, branches, or repositories, changing repository visibility, rewriting history | Refuse and explain, unless the user asked for that exact action |

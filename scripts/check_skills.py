@@ -295,6 +295,20 @@ def main(sync: bool = False) -> int:
             f"version mismatch: plugin.json {plugin.get('version')} vs marketplace.json {entry.get('version')}"
         )
 
+    agy_path = ROOT / ".antigravity-plugin" / "plugin.json"
+    if not agy_path.is_file():
+        problems.append(".antigravity-plugin/plugin.json: file is missing")
+    else:
+        agy = json.loads(agy_path.read_text(encoding="utf-8"))
+        if agy.get("name") != plugin.get("name"):
+            problems.append(
+                f"name mismatch: plugin.json {plugin.get('name')} vs .antigravity-plugin/plugin.json {agy.get('name')}"
+            )
+        if agy.get("version") != plugin.get("version"):
+            problems.append(
+                f"version mismatch: plugin.json {plugin.get('version')} vs .antigravity-plugin/plugin.json {agy.get('version')}"
+            )
+
     for p in problems:
         print(p)
     print(f"{len(skills)} skills checked, {len(problems)} problem(s)")
